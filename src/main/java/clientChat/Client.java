@@ -7,5 +7,6 @@ public class Client {
         ClientStart clientStart = new ClientStart();
         
         clientStart.setVisible(true);
+        System.out.println("ciao");                
     }
 }

@@ -24,7 +24,7 @@ public class ClientStart extends javax.swing.JFrame {
         lblClientChat.setBackground(new java.awt.Color(204, 204, 255));
         lblClientChat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblClientChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblClientChat.setText("Client Della Chat");
+        lblClientChat.setText("Easy SMS");
 
         jLabel2.setBackground(new java.awt.Color(153, 153, 255));
         jLabel2.setText("IP:");
