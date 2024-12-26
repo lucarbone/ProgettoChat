@@ -5,6 +5,10 @@ public class ClientStart extends javax.swing.JFrame {
     public ClientStart() {
         initComponents();
     }
+    private void play(NameClient c){
+        c.setVisible(true);
+        this.setVisible(false);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -42,6 +46,11 @@ public class ClientStart extends javax.swing.JFrame {
 
         btnConnection.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnConnection.setText("CONNETTI ALLA CHAT");
+        btnConnection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConnectionActionPerformed(evt);
+            }
+        });
 
         lblShowErrors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblShowErrors.setText("(spazio per eventali errori)");
@@ -101,6 +110,11 @@ public class ClientStart extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectionActionPerformed
+        NameClient c = new NameClient();
+        play(c);
+    }//GEN-LAST:event_btnConnectionActionPerformed
 
     /**
      * @param args the command line arguments
