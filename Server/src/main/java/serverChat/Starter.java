@@ -18,10 +18,11 @@ public class Starter extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ipJTF = new javax.swing.JTextField();
+        txtIp = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        portaJTF = new javax.swing.JTextField();
+        txtPorta = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
+        lblError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Server");
@@ -36,17 +37,18 @@ public class Starter extends javax.swing.JFrame {
         jLabel2.setText("IP:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        ipJTF.setBackground(new java.awt.Color(204, 255, 204));
-        ipJTF.setToolTipText("");
-        ipJTF.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtIp.setBackground(new java.awt.Color(204, 255, 204));
+        txtIp.setToolTipText("");
+        txtIp.setCaretColor(new java.awt.Color(255, 255, 255));
 
         jLabel3.setBackground(new java.awt.Color(153, 153, 255));
         jLabel3.setText("Porta:");
         jLabel3.setFocusable(false);
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        portaJTF.setBackground(new java.awt.Color(204, 255, 204));
-        portaJTF.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtPorta.setBackground(new java.awt.Color(204, 255, 204));
+        txtPorta.setText("8080");
+        txtPorta.setCaretColor(new java.awt.Color(255, 255, 255));
 
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jToggleButton1.setText("LANCIA SERVER");
@@ -56,12 +58,16 @@ public class Starter extends javax.swing.JFrame {
             }
         });
 
+        lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblError.setToolTipText("");
+        lblError.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
             .addGroup(layout.createSequentialGroup()
@@ -74,13 +80,17 @@ public class Starter extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ipJTF, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtIp, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(portaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 68, Short.MAX_VALUE)))
+                                .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,29 +100,51 @@ public class Starter extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(ipJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(portaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(141, 141, 141)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addGap(34, 34, 34))
         );
 
         jLabel2.getAccessibleContext().setAccessibleName("IP");
-        ipJTF.getAccessibleContext().setAccessibleName("ipJTF");
+        txtIp.getAccessibleContext().setAccessibleName("ipJTF");
         jLabel3.getAccessibleContext().setAccessibleName("Porta");
-        portaJTF.getAccessibleContext().setAccessibleName("portaJTF");
+        txtPorta.getAccessibleContext().setAccessibleName("portaJTF");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        String ip = ipJTF.getText();
-        int port = Integer.parseInt(portaJTF.getText());
-        play(ip, port);
+        String ip = txtIp.getText();
+        
+        // Verifichiuamo che l'utente abbia inserito dei valori 
+        if(ip.equals("") || txtPorta.getText().equals("")){
+            lblError.setText("Inserisci dei valori!!");
+        }
+        else{
+            // Verifichiamo che i valori siano validi
+            if(ip.length()>15 || ip.length()<7){
+                lblError.setText("Inserisci un'indirizzo ip valido!!");
+            }
+            else{
+                try{
+                    int port = Integer.parseInt(txtPorta.getText()); 
+                    play(ip, port);
+                }
+                catch(Exception e){
+                    lblError.setText("Inserisci una porta valida!!");
+                }
+            }
+        }
+        
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     public static void main(String args[]) {
@@ -124,11 +156,12 @@ public class Starter extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ipJTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JTextField portaJTF;
+    private javax.swing.JLabel lblError;
+    private javax.swing.JTextField txtIp;
+    private javax.swing.JTextField txtPorta;
     // End of variables declaration//GEN-END:variables
 }
