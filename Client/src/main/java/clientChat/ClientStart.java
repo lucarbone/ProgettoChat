@@ -1,8 +1,18 @@
 package clientChat;
 
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.Scanner;
+
 public class ClientStart extends javax.swing.JFrame {
 
+    private String serverIP;
+    private int serverPort;
+    Socket connection;
+    
     public ClientStart() {
+        InetAddress serverAddress;
         initComponents();
     }
     private void play(NameClient c){
@@ -18,9 +28,9 @@ public class ClientStart extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtIp = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtPort = new javax.swing.JTextField();
+        txtPorta = new javax.swing.JTextField();
         btnConnection = new javax.swing.JToggleButton();
-        lblShowErrors = new javax.swing.JLabel();
+        lblError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Easy SMS");
@@ -39,18 +49,18 @@ public class ClientStart extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(153, 153, 255));
         jLabel3.setText("Porta:");
 
-        txtPort.setBackground(new java.awt.Color(204, 204, 255));
-        txtPort.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtPorta.setBackground(new java.awt.Color(204, 204, 255));
+        txtPorta.setCaretColor(new java.awt.Color(255, 255, 255));
 
         btnConnection.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnConnection.setText("CONNETTI ALLA CHAT");
+        btnConnection.setText("COLLEGATI ALLA CHAT");
         btnConnection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConnectionActionPerformed(evt);
             }
         });
 
-        lblShowErrors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,14 +80,14 @@ public class ClientStart extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnConnection))))
-                        .addGap(0, 68, Short.MAX_VALUE))
+                        .addGap(0, 67, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblClientChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblShowErrors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -92,36 +102,68 @@ public class ClientStart extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(140, 140, 140)
                 .addComponent(btnConnection, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblShowErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
         txtIp.getAccessibleContext().setAccessibleName("IpClient");
-        txtPort.getAccessibleContext().setAccessibleName("PortClient");
+        txtPorta.getAccessibleContext().setAccessibleName("PortClient");
         btnConnection.getAccessibleContext().setAccessibleName("ConnettiB1");
-        lblShowErrors.getAccessibleContext().setAccessibleName("ErrorLabel1");
+        lblError.getAccessibleContext().setAccessibleName("ErrorLabel1");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectionActionPerformed
-        if(txtIp.getText().equals("") || txtPort.getText().equals("")){
-            lblShowErrors.setText("Inserisci dei dati validi!");
+        this.serverIP = txtIp.getText();
+        
+        if(serverIP.equals("") || txtPorta.getText().equals("")){
+            lblError.setText("Inserisci dei dati validi!");
         }
         else{
-            NameClient c = new NameClient();
-            play(c);
-            System.out.println("p");
+            
+            if(serverIP.length()>15 || serverIP.length()<7){
+                lblError.setText("Inserisci un'indirizzo ip valido!!");
+            }
+            else{
+                try{
+                    this.serverPort = Integer.parseInt(txtPorta.getText()); 
+                }
+                catch(Exception e){
+                    lblError.setText("Inserisci una porta valida!!");
+                }
+            }
+            
+            try{
+                InetAddress serverAddress = InetAddress.getLocalHost();
+                Socket connection = new Socket(serverAddress, this.serverPort);
+            
+                Scanner fromConnection = new Scanner(connection.getInputStream());
+                PrintWriter toConnection = new PrintWriter(connection.getOutputStream(),true);
+                
+                
+                NameClient c = new NameClient();
+                c.setConnections(fromConnection, toConnection);
+                play(c);
+                
+                
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                lblError.setText("C'è stato un errore durante l'accesso al server");
+            }
+            
+            
         }
         
     }//GEN-LAST:event_btnConnectionActionPerformed
 
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -154,6 +196,7 @@ public class ClientStart extends javax.swing.JFrame {
                 new ClientStart().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -161,8 +204,8 @@ public class ClientStart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblClientChat;
-    private javax.swing.JLabel lblShowErrors;
+    private javax.swing.JLabel lblError;
     private javax.swing.JTextField txtIp;
-    private javax.swing.JTextField txtPort;
+    private javax.swing.JTextField txtPorta;
     // End of variables declaration//GEN-END:variables
 }

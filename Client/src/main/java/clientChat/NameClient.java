@@ -1,10 +1,17 @@
 
 package clientChat;
 
-public class NameClient extends javax.swing.JFrame {
+import java.io.PrintWriter;
+import java.util.Scanner;
 
+public class NameClient extends javax.swing.JFrame {
+    
+    private Scanner fromConnection;
+    private PrintWriter toConnection;
+    
     public NameClient() {
         initComponents();
+
     }
 
     private void play(ChatClient C){
@@ -30,7 +37,7 @@ public class NameClient extends javax.swing.JFrame {
         txtTitle.setText("Easy SMS");
 
         btnConnect.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnConnect.setText("CONNETTI ALLA CHAT");
+        btnConnect.setText("ACCEDI ALLA CHAT");
         btnConnect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConnectActionPerformed(evt);
@@ -113,10 +120,16 @@ public class NameClient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    
+    public void setConnections(Scanner fc, PrintWriter tc){
+        this.fromConnection=fc;
+        this.toConnection=tc;
+    }
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -130,14 +143,16 @@ public class NameClient extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NameClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NameClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NameClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NameClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -147,8 +162,8 @@ public class NameClient extends javax.swing.JFrame {
                 new NameClient().setVisible(true);
             }
         });
+        
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnConnect;
     private javax.swing.JLabel jLabel2;
