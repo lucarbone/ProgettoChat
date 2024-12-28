@@ -38,6 +38,7 @@ public class Starter extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
         txtIp.setBackground(new java.awt.Color(204, 255, 204));
+        txtIp.setText("127.0.0.1");
         txtIp.setToolTipText("");
         txtIp.setCaretColor(new java.awt.Color(255, 255, 255));
 

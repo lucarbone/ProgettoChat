@@ -1,11 +1,18 @@
 package serverChat;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ControllerServer extends javax.swing.JFrame {
 
     private String ip;
     private int port;
+    private ArrayList<ConnectionThread> usersConnected;
     
     public ControllerServer(String ip, int port) {
         initComponents();
@@ -13,6 +20,7 @@ public class ControllerServer extends javax.swing.JFrame {
         this.port = port;
         lblIp.setText("Ip: "+ip);
         lblPorta.setText("Porta: "+port);
+        usersConnected = new ArrayList<ConnectionThread>();
     }
 
     @SuppressWarnings("unchecked")
@@ -192,12 +200,39 @@ public class ControllerServer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    public static void main(String args[]) {
+    public void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ControllerServer().setVisible(true);
             }
         });
+        
+        try {
+            ServerSocket myServer = new ServerSocket(this.port);
+
+            while(true){
+                System.out.println("Server online");
+            
+                Socket connection = myServer.accept();
+                System.out.println("Connessione stabilita");
+
+                // informazioni del client connesso
+                String clientIP = connection.getInetAddress().getHostAddress();
+                int clientPort = connection.getPort();
+                System.out.println("IP: "+clientIP+ " port: "+clientPort+"\n");
+
+                /*
+                 * Parte il thread che gestisce la connessione
+                 */
+                ConnectionThread connectionThread = new ConnectionThread(connection);
+                usersConnected.add(connectionThread);
+                Thread t = new Thread(connectionThread);
+                t.start();
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
