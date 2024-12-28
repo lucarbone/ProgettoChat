@@ -15,6 +15,7 @@ public class ClientStart extends javax.swing.JFrame {
         InetAddress serverAddress;
         initComponents();
     }
+    
     private void play(NameClient c){
         c.setVisible(true);
         this.setVisible(false);

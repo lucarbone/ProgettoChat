@@ -11,11 +11,12 @@ public class NameClient extends javax.swing.JFrame {
     
     public NameClient() {
         initComponents();
-
     }
 
     private void play(ChatClient C){
         C.setVisible(true);
+        Thread t = new Thread(C);
+        t.start();
         this.setVisible(false);
     }
     @SuppressWarnings("unchecked")
@@ -110,25 +111,31 @@ public class NameClient extends javax.swing.JFrame {
             lblError.setText("Inserisci un nome!");
         }
         else{
-            ChatClient chatClient = new ChatClient();
+            
+            /*
+            toConnection.println(txtName.getText());
+            if(fromConnection.nextLine().equals("no")){
+                lblError.setText("Nickname già in uso, scegline un altro");
+            }
+            else{
+                ChatClient chatClient = new ChatClient(fromConnection, toConnection);
+                play(chatClient);
+            }
+            */
+            ChatClient chatClient = new ChatClient(fromConnection, toConnection);
             play(chatClient);
         }
-        
     }//GEN-LAST:event_btnConnectActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    
     public void setConnections(Scanner fc, PrintWriter tc){
         this.fromConnection=fc;
         this.toConnection=tc;
     }
     
-    /**
-     * @param args the command line arguments
-     */
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -155,14 +162,12 @@ public class NameClient extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NameClient().setVisible(true);
             }
         });
-        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnConnect;
