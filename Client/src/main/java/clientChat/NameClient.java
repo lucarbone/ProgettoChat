@@ -19,15 +19,15 @@ public class NameClient extends javax.swing.JFrame {
         btnConnect = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("La Chat");
+        setTitle("Easy SMS");
 
         txtTitle.setBackground(new java.awt.Color(204, 204, 255));
         txtTitle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtTitle.setText("Client Della Chat");
+        txtTitle.setText("Easy SMS");
 
         btnConnect.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnConnect.setText("CONNETTI ALLA CHAT");
@@ -48,8 +48,7 @@ public class NameClient extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("(spazio per eventali errori)");
+        lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,7 +70,7 @@ public class NameClient extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -86,20 +85,28 @@ public class NameClient extends javax.swing.JFrame {
                 .addGap(179, 179, 179)
                 .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
         btnConnect.getAccessibleContext().setAccessibleName("ConnetiB2");
         txtName.getAccessibleContext().setAccessibleName("NomeCTF");
-        jLabel3.getAccessibleContext().setAccessibleName("ErrorLabel2");
+        lblError.getAccessibleContext().setAccessibleName("ErrorLabel2");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectActionPerformed
-        ChatClient chatClient = new ChatClient();
-        play(chatClient);
+        
+        if(txtName.getText().equals("")){
+            lblError.setText("Inserisci un nome!");
+        }
+        else{
+            ChatClient chatClient = new ChatClient();
+            play(chatClient);
+        }
+        
     }//GEN-LAST:event_btnConnectActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -145,7 +152,7 @@ public class NameClient extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnConnect;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblError;
     private javax.swing.JTextField txtName;
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables

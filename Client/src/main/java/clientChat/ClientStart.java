@@ -23,7 +23,7 @@ public class ClientStart extends javax.swing.JFrame {
         lblShowErrors = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("La Chat");
+        setTitle("Easy SMS");
 
         lblClientChat.setBackground(new java.awt.Color(204, 204, 255));
         lblClientChat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -34,14 +34,12 @@ public class ClientStart extends javax.swing.JFrame {
         jLabel2.setText("IP:");
 
         txtIp.setBackground(new java.awt.Color(204, 204, 255));
-        txtIp.setText("(inserito di default)");
         txtIp.setCaretColor(new java.awt.Color(255, 255, 255));
 
         jLabel3.setBackground(new java.awt.Color(153, 153, 255));
         jLabel3.setText("Porta:");
 
         txtPort.setBackground(new java.awt.Color(204, 204, 255));
-        txtPort.setText("(inserito dall'utente)");
         txtPort.setCaretColor(new java.awt.Color(255, 255, 255));
 
         btnConnection.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -53,7 +51,6 @@ public class ClientStart extends javax.swing.JFrame {
         });
 
         lblShowErrors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblShowErrors.setText("(spazio per eventali errori)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,16 +106,21 @@ public class ClientStart extends javax.swing.JFrame {
         lblShowErrors.getAccessibleContext().setAccessibleName("ErrorLabel1");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectionActionPerformed
-        NameClient c = new NameClient();
-        play(c);
+        if(txtIp.getText().equals("") || txtPort.getText().equals("")){
+            lblShowErrors.setText("Inserisci dei dati validi!");
+        }
+        else{
+            NameClient c = new NameClient();
+            play(c);
+            System.out.println("p");
+        }
+        
     }//GEN-LAST:event_btnConnectionActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
