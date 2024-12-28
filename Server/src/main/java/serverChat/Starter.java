@@ -30,14 +30,13 @@ public class Starter extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(204, 204, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText(" Server Della Chat");
+        jLabel1.setText("Easy SMS Server");
 
         jLabel2.setBackground(new java.awt.Color(153, 153, 255));
         jLabel2.setText("IP:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
         ipJTF.setBackground(new java.awt.Color(204, 255, 204));
-        ipJTF.setText("(inserito di default)");
         ipJTF.setToolTipText("");
         ipJTF.setCaretColor(new java.awt.Color(255, 255, 255));
 
@@ -47,7 +46,6 @@ public class Starter extends javax.swing.JFrame {
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
         portaJTF.setBackground(new java.awt.Color(204, 255, 204));
-        portaJTF.setText("(inserito dall'utente)");
         portaJTF.setCaretColor(new java.awt.Color(255, 255, 255));
 
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -108,6 +106,7 @@ public class Starter extends javax.swing.JFrame {
         portaJTF.getAccessibleContext().setAccessibleName("portaJTF");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
