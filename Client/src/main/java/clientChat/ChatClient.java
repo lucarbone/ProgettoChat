@@ -21,7 +21,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        areaMessage = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         btnQuit = new javax.swing.JButton();
         txtMessage = new javax.swing.JTextField();
@@ -30,10 +30,10 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("La Chat");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-        jTextArea1.getAccessibleContext().setAccessibleName("ChatTFA");
+        areaMessage.setColumns(20);
+        areaMessage.setRows(5);
+        jScrollPane1.setViewportView(areaMessage);
+        areaMessage.getAccessibleContext().setAccessibleName("ChatTFA");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Easy SMS");
@@ -48,6 +48,11 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
 
         btnSend.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSend.setText("Invia");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,13 +107,25 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         }
     }//GEN-LAST:event_btnQuitActionPerformed
 
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        String msg = txtMessage.getText();
+        if(!(msg.equals(""))){
+            areaMessage.append(msg + "\n");
+            txtMessage.setText("");
+        }else{
+            JOptionPane.showMessageDialog(this, "Ciao");
+        }
+        
+        
+    }//GEN-LAST:event_btnSendActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaMessage;
     private javax.swing.JButton btnQuit;
     private javax.swing.JButton btnSend;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtMessage;
     // End of variables declaration//GEN-END:variables
 
