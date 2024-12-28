@@ -1,8 +1,8 @@
 package serverChat;
 public class ControllerServer extends javax.swing.JFrame {
 
-    String ip;
-    int port;
+    private String ip;
+    private int port;
     
     public ControllerServer(String ip, int port) {
         initComponents();
@@ -136,6 +136,7 @@ public class ControllerServer extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
