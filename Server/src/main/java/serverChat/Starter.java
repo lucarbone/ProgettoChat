@@ -1,6 +1,6 @@
 package serverChat;
 
-public class Starter extends javax.swing.JFrame {
+public class Starter extends javax.swing.JFrame{
 
     ControllerServer C;
     public Starter() {
@@ -9,6 +9,8 @@ public class Starter extends javax.swing.JFrame {
     
     private void play(String ip, int port){
         C = new ControllerServer(ip, port);
+        Thread t = new Thread(C);
+        t.start();
         C.setVisible(true);
         this.setVisible(false);
     }
@@ -145,16 +147,8 @@ public class Starter extends javax.swing.JFrame {
             }
         }
         
-        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -165,4 +159,5 @@ public class Starter extends javax.swing.JFrame {
     private javax.swing.JTextField txtIp;
     private javax.swing.JTextField txtPorta;
     // End of variables declaration//GEN-END:variables
+
 }
