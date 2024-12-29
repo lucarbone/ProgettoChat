@@ -45,12 +45,14 @@ public class ClientStart extends javax.swing.JFrame {
         jLabel2.setText("IP:");
 
         txtIp.setBackground(new java.awt.Color(204, 204, 255));
+        txtIp.setText("127.0.0.1");
         txtIp.setCaretColor(new java.awt.Color(255, 255, 255));
 
         jLabel3.setBackground(new java.awt.Color(153, 153, 255));
         jLabel3.setText("Porta:");
 
         txtPorta.setBackground(new java.awt.Color(204, 204, 255));
+        txtPorta.setText("8080");
         txtPorta.setCaretColor(new java.awt.Color(255, 255, 255));
 
         btnConnection.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
