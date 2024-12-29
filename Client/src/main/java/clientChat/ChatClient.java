@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,6 +21,8 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     
     public ChatClient(Scanner fc, PrintWriter tc) {
         initComponents();
+        areaMessage.setLayout(new BoxLayout(areaMessage, BoxLayout.Y_AXIS));
+
         this.fromConnection = fc;
         this.toConnection = tc;
         gct = new GlobalChatThread(this.getTxtPanel(),fc);
@@ -36,6 +39,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         btnQuit = new javax.swing.JButton();
         txtMessage = new javax.swing.JTextField();
         btnSend = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         areaMessage = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,18 +64,18 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
             }
         });
 
-        areaMessage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         javax.swing.GroupLayout areaMessageLayout = new javax.swing.GroupLayout(areaMessage);
         areaMessage.setLayout(areaMessageLayout);
         areaMessageLayout.setHorizontalGroup(
             areaMessageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 316, Short.MAX_VALUE)
         );
         areaMessageLayout.setVerticalGroup(
             areaMessageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 394, Short.MAX_VALUE)
         );
+
+        jScrollPane1.setViewportView(areaMessage);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,17 +84,17 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                        .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)))
                 .addContainerGap())
-            .addComponent(areaMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,12 +103,12 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnQuit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(areaMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMessage)
-                    .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                    .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -130,7 +134,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         String msg = txtMessage.getText();
         if(!(msg.equals(""))){
-            addMessage("Tu: " + msg, true);
+            addMessage(msg);
             toConnection.println(msg);
             txtMessage.setText("");
         }else{
@@ -145,6 +149,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private javax.swing.JButton btnQuit;
     private javax.swing.JButton btnSend;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtMessage;
     // End of variables declaration//GEN-END:variables
 
@@ -158,20 +163,20 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         return this.areaMessage;
     }
     
-    public void addMessage(String message, boolean isSent){
-        MessageBox msgBox = new MessageBox(txtMessage.getText());
-        msgBox.setLayout(new BorderLayout());
+    public void addMessage(String message){
         
-        
-        JLabel lblMessage = new JLabel(txtMessage.getText());
-        msgBox.add(lblMessage, BorderLayout.CENTER);
+        MessageBox msgBox = new MessageBox("Tu",message);
         
         JPanel alignPanel = new JPanel();
-        alignPanel.setLayout(new FlowLayout(isSent ? FlowLayout.RIGHT : FlowLayout.LEFT));
+        alignPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         alignPanel.add(msgBox);
         
         areaMessage.add(alignPanel);
         areaMessage.revalidate();
         areaMessage.repaint();
+        
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            jScrollPane1.getVerticalScrollBar().setValue(jScrollPane1.getVerticalScrollBar().getMaximum());
+        });
     }
 }
