@@ -102,6 +102,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
         int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di abbandonare la chat?", "Abbandona chat", JOptionPane.YES_NO_OPTION);
         if(choice == JOptionPane.YES_OPTION){
+            this.toConnection.println("exit");
             this.dispose();
             System.exit(0);
         }
@@ -113,9 +114,8 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
             areaMessage.append(msg + "\n");
             txtMessage.setText("");
         }else{
-            JOptionPane.showMessageDialog(this, "Ciao");
+            JOptionPane.showMessageDialog(this, "Non puoi inserire un messaggio vuoto!");
         }
-        
         
     }//GEN-LAST:event_btnSendActionPerformed
 
@@ -132,7 +132,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     @Override
     public void run() {
         while(true){
-            System.out.println("pd");
+            //System.out.println("pd");
         }
     }
 }
