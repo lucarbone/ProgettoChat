@@ -4,16 +4,22 @@ package clientChat;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 public class ChatClient extends javax.swing.JFrame implements Runnable{
     
     private Scanner fromConnection;
     private PrintWriter toConnection;
+    private GlobalChatThread gct;
     
     public ChatClient(Scanner fc, PrintWriter tc) {
+        initComponents();
         this.fromConnection = fc;
         this.toConnection = tc;
-        initComponents();
+        gct = new GlobalChatThread(this.getTxtArea(),fc);
+        
+        Thread t = new Thread(gct);
+        t.start();
     }
 
     @SuppressWarnings("unchecked")
@@ -111,10 +117,11 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         String msg = txtMessage.getText();
         if(!(msg.equals(""))){
-            areaMessage.append(msg + "\n");
+            areaMessage.append("Tu: "+msg + "\n");
+            toConnection.println(msg);
             txtMessage.setText("");
         }else{
-            JOptionPane.showMessageDialog(this, "Non puoi inserire un messaggio vuoto!");
+            JOptionPane.showMessageDialog(this, "Non puoi mandare un messaggio vuoto");
         }
         
     }//GEN-LAST:event_btnSendActionPerformed
@@ -129,10 +136,13 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private javax.swing.JTextField txtMessage;
     // End of variables declaration//GEN-END:variables
 
+    
     @Override
     public void run() {
-        while(true){
-            //System.out.println("pd");
-        }
+       
+    }
+    
+    public JTextArea getTxtArea(){
+        return this.areaMessage;
     }
 }

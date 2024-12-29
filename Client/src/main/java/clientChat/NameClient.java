@@ -111,18 +111,16 @@ public class NameClient extends javax.swing.JFrame {
             lblError.setText("Inserisci un nome!");
         }
         else{
-            
-            /*toConnection.println(txtName.getText());
+            toConnection.println("nameinserting");
+            toConnection.println(txtName.getText());
             if(fromConnection.nextLine().equals("no")){
                 lblError.setText("Nickname già in uso, scegline un altro");
             }
             else{
                 ChatClient chatClient = new ChatClient(fromConnection, toConnection);
                 play(chatClient);
-            }*/
+            }
             
-            ChatClient chatClient = new ChatClient(fromConnection, toConnection);
-            play(chatClient);
         }
     }//GEN-LAST:event_btnConnectActionPerformed
 
