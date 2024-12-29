@@ -6,7 +6,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class ControllerServer extends javax.swing.JFrame implements Runnable{
 
@@ -14,6 +16,8 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
     private int port;
     private ArrayList<ConnectionThread> usersConnected;
     private ArrayList<Utente> utenti;
+    private ConnectionThread ct;
+    private ConnectionsList cl;
     
     public ControllerServer(String ip, int port) {
         initComponents();
@@ -21,9 +25,13 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
         this.port = port;
         lblIp.setText("Ip: "+ip);
         lblPorta.setText("Porta: "+port);
-        usersConnected = new ArrayList<ConnectionThread>();
-        utenti = new ArrayList<Utente>();
-        Update();
+        ct = new ConnectionThread();
+        cl = new ConnectionsList(ct, this.getPanel(),this.getNUsersLabel());
+        
+        
+        // Da sistemare implementazione lasciar commentato
+        //Thread connectionListThread = new Thread(cl);
+        //connectionListThread.start();
     }
 
     @SuppressWarnings("unchecked")
@@ -178,10 +186,10 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
     public void run() {
         try {
             ServerSocket myServer = new ServerSocket(this.port);
+            System.out.println("Server online");
 
             while(true){
-                System.out.println("Server online");
-            
+                
                 Socket connection = myServer.accept();
                 System.out.println("Connessione stabilita");
 
@@ -194,10 +202,9 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                  * Parte il thread che gestisce la connessione
                  */
                 ConnectionThread connectionThread = new ConnectionThread(connection);
-                usersConnected.add(connectionThread);
+                cl.updateConnections(connectionThread);
                 Thread t = new Thread(connectionThread);
                 t.start();
-                Update();
             }
             
         } catch (Exception e) {
@@ -205,22 +212,11 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
         }
     }
     
-    private void Update(){
-        int UC = usersConnected.size();
-        nUsers.setText(""+UC);
-       
-        for(int i = 0; i<UC; i++){
-            Utente u = new Utente(i);
-            
-            utenti.add(u);
-            utenti.get(i).setBounds(10,(((i)*40)+10),285,35);
-            UJP.add(utenti.get(i));
-        }
-        
-       
-       
-       
+    public JPanel getPanel(){
+        return this.UJP;
     }
-    
+    public JLabel getNUsersLabel(){
+        return this.nUsers;
+    }
     
 }

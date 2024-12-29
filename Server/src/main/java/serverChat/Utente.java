@@ -3,10 +3,17 @@ package serverChat;
 
 public class Utente extends javax.swing.JPanel {
 
-    int i;
-    public Utente(int i) {
+    int userIndex;
+    private String userName="";
+    private String userIP="";
+    
+    public Utente(int userIndex, String userName, String userIP) {
         initComponents();
-        this.i = i;
+        this.userIndex = userIndex;
+        this.userName = userName;
+        this.userIP = userIP;
+        nomeJL.setText(userName);
+        ipJL.setText(userIP);
     }
 
     
@@ -56,7 +63,7 @@ public class Utente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void KickJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KickJBActionPerformed
-        System.out.println("pulsante numero: " + i);
+        System.out.println("pulsante numero: " + userIndex);
     }//GEN-LAST:event_KickJBActionPerformed
 
 
