@@ -30,8 +30,8 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
         
         
         // Da sistemare implementazione lasciar commentato
-        //Thread connectionListThread = new Thread(cl);
-        //connectionListThread.start();
+        Thread connectionListThread = new Thread(cl);
+        connectionListThread.start();
     }
 
     @SuppressWarnings("unchecked")
@@ -205,6 +205,7 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                 cl.updateConnections(connectionThread);
                 Thread t = new Thread(connectionThread);
                 t.start();
+                
             }
             
         } catch (Exception e) {

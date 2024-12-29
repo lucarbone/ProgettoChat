@@ -3,6 +3,7 @@ package clientChat;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class NameClient extends javax.swing.JFrame {
     
@@ -31,6 +32,11 @@ public class NameClient extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Easy SMS");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                DisconnectU(evt);
+            }
+        });
 
         txtTitle.setBackground(new java.awt.Color(204, 204, 255));
         txtTitle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -127,6 +133,21 @@ public class NameClient extends javax.swing.JFrame {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void DisconnectU(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_DisconnectU
+        /*
+        Se l'utente chiude la pagina prima di aver inserito il nome, 
+        il server lo considera ancora come attivo e lo mostra come tale. 
+        Per evitare questo comportamento, prima della chiusura della finestra, 
+        viene inviato un messaggio al server per notificare la disconnessione dell'utente.
+        */
+        int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di abbandonare la chat?", "Abbandona chat", JOptionPane.YES_NO_OPTION);
+        if(choice == JOptionPane.YES_OPTION){
+            this.toConnection.println("exit");
+            this.dispose();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_DisconnectU
 
     public void setConnections(Scanner fc, PrintWriter tc){
         this.fromConnection=fc;

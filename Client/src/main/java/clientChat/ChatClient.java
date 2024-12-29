@@ -35,6 +35,11 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("La Chat");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                DisconnectU(evt);
+            }
+        });
 
         areaMessage.setColumns(20);
         areaMessage.setRows(5);
@@ -106,12 +111,13 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     
     // L'utente abbandona la chat
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
-        int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di abbandonare la chat?", "Abbandona chat", JOptionPane.YES_NO_OPTION);
-        if(choice == JOptionPane.YES_OPTION){
-            this.toConnection.println("exit");
-            this.dispose();
-            System.exit(0);
-        }
+        /*
+        Se l'utente chiude la pagina senza abbandonare la chat, 
+        il server lo considera ancora come attivo e lo mostra come tale. 
+        Per evitare questo comportamento, prima della chiusura della finestra, 
+        viene inviato un messaggio al server per notificare la disconnessione dell'utente.
+        */
+        UserQuit();
     }//GEN-LAST:event_btnQuitActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
@@ -125,6 +131,16 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         }
         
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void DisconnectU(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_DisconnectU
+        /*
+        Se l'utente chiude la pagina senza abbandonare la chat, 
+        il server lo considera ancora come attivo e lo mostra come tale. 
+        Per evitare questo comportamento, prima della chiusura della finestra, 
+        viene inviato un messaggio al server per notificare la disconnessione dell'utente.
+        */
+        UserQuit();
+    }//GEN-LAST:event_DisconnectU
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -145,4 +161,13 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     public JTextArea getTxtArea(){
         return this.areaMessage;
     }
+    private void UserQuit(){
+        int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di abbandonare la chat?", "Abbandona chat", JOptionPane.YES_NO_OPTION);
+        if(choice == JOptionPane.YES_OPTION){
+            this.toConnection.println("exit");
+            this.dispose();
+            System.exit(0);
+        }
+    }
+    
 }

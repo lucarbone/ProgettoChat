@@ -29,15 +29,16 @@ public class ConnectionsList implements Runnable{
     public void run() {
         while(true){
             
+            
+            
             try {
                 numberUsersLabel.setText(""+this.currentCT.getConnectionsListSize());
-                
                 for(int i = 0;i<this.currentCT.getConnectionsListSize();i++){
-                    Utente u = new Utente(i,"","");
+                    Utente u = new Utente(i,usersList.get(i).getUsername(),usersList.get(i).getAddress());
+                    
                     utenti.add(u);
                     utenti.get(i).setBounds(10,(((i)*40)+10),285,35);
                     connectionsPanel.add(utenti.get(i));
-                    i++;
                 }
                 
                 Thread.sleep(2000);
@@ -46,6 +47,7 @@ public class ConnectionsList implements Runnable{
                 connectionsPanel.revalidate(); // Aggiorna il layout
                 connectionsPanel.repaint();
                 utenti.clear();
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(ConnectionsList.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -54,6 +56,7 @@ public class ConnectionsList implements Runnable{
     
     public void updateConnections(ConnectionThread ct){
         this.updatedCT = ct;
+        
     }
     
 }

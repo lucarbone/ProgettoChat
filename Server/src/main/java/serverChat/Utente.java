@@ -12,7 +12,12 @@ public class Utente extends javax.swing.JPanel {
         this.userIndex = userIndex;
         this.userName = userName;
         this.userIP = userIP;
-        nomeJL.setText(userName);
+        if(userName.equals("")){
+            nomeJL.setText(userIndex +": N/A");
+        }else{
+            nomeJL.setText(userIndex +": " +userName);
+        }
+        
         ipJL.setText(userIP);
     }
 
