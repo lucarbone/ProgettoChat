@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -201,10 +202,11 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                 /*
                  * Parte il thread che gestisce la connessione
                  */
-                ConnectionThread connectionThread = new ConnectionThread(connection);
+                ConnectionThread connectionThread = new ConnectionThread(connection, cl);
                 cl.updateConnections(connectionThread);
                 Thread t = new Thread(connectionThread);
                 t.start();
+                connectionThread.setupdate(cl);
                 
             }
             

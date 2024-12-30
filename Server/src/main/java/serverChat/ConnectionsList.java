@@ -15,6 +15,7 @@ public class ConnectionsList implements Runnable{
     private JLabel numberUsersLabel;
     private ArrayList<ConnectionThread> usersList = new ArrayList<>();
     
+    
     public ConnectionsList(ConnectionThread ct, JPanel pnl, JLabel lbl){
         this.currentCT = ct;
         this.updatedCT = ct;
@@ -28,34 +29,30 @@ public class ConnectionsList implements Runnable{
     @Override
     public void run() {
         while(true){
+            //System.out.println("run");
             
-            
-            
-            try {
-                numberUsersLabel.setText(""+this.currentCT.getConnectionsListSize());
-                for(int i = 0;i<this.currentCT.getConnectionsListSize();i++){
-                    Utente u = new Utente(i,usersList.get(i).getUsername(),usersList.get(i).getAddress());
-                    
-                    utenti.add(u);
-                    utenti.get(i).setBounds(10,(((i)*40)+10),285,35);
-                    connectionsPanel.add(utenti.get(i));
-                }
-                
-                Thread.sleep(2000);
-                this.currentCT = this.updatedCT;
-                connectionsPanel.removeAll(); // Rimuove tutti i componenti dal pannello
-                connectionsPanel.revalidate(); // Aggiorna il layout
-                connectionsPanel.repaint();
-                utenti.clear();
-                
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ConnectionsList.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+        }//fine while
+    }//fine run
     
     public void updateConnections(ConnectionThread ct){
         this.updatedCT = ct;
+        RedrawPannel();
+    }
+    
+    public void RedrawPannel(){
+        this.currentCT = this.updatedCT;
+        connectionsPanel.removeAll(); // Rimuove tutti i componenti dal pannello
+        connectionsPanel.revalidate(); // Aggiorna il layout
+        connectionsPanel.repaint();
+        utenti.clear();
+
+        numberUsersLabel.setText(""+this.currentCT.getConnectionsListSize());
+        for(int i = 0;i<this.currentCT.getConnectionsListSize();i++){
+                Utente u = new Utente(i,usersList.get(i).getUsername(),usersList.get(i).getAddress());
+                utenti.add(u);
+                utenti.get(i).setBounds(10,(((i)*40)+10),285,35);
+                connectionsPanel.add(utenti.get(i));
+        }
         
     }
     

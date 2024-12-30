@@ -1,11 +1,14 @@
 package serverChat;
 
+import java.util.ArrayList;
+
 
 public class Utente extends javax.swing.JPanel {
 
     int userIndex;
     private String userName="";
     private String userIP="";
+    private boolean Expelled=false;
     
     public Utente(int userIndex, String userName, String userIP) {
         initComponents();
@@ -69,8 +72,11 @@ public class Utente extends javax.swing.JPanel {
 
     private void KickJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KickJBActionPerformed
         System.out.println("pulsante numero: " + userIndex);
+        
     }//GEN-LAST:event_KickJBActionPerformed
 
+   
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton KickJB;
