@@ -1,6 +1,8 @@
 package clientChat;
 
 import java.awt.FlowLayout;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,7 +14,8 @@ public class GlobalChatThread implements Runnable{
 
     private JPanel areaMessage = new JPanel();
     private Scanner fromConnection;
-    String message;
+    private String message;
+    private String time;
     
     public GlobalChatThread(JPanel pnl, Scanner fc){
         areaMessage = new JPanel();
@@ -24,13 +27,14 @@ public class GlobalChatThread implements Runnable{
     public void run() {
         while(true){
             message = fromConnection.nextLine();
-            addMessage(message);
+            time = getCurrentTime();
+            addMessage(message, time);
         }
     }
     
-    public void addMessage(String message){
+    public void addMessage(String message, String time){
         
-        MessageBox msgBox = new MessageBox(".",message);
+        MessageBox msgBox = new MessageBox(".",message, time);
         
         JPanel alignPanel = new JPanel();
         alignPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -41,5 +45,10 @@ public class GlobalChatThread implements Runnable{
         areaMessage.repaint();
         
         
+    }
+    private String getCurrentTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return now.format(formatter);
     }
 }

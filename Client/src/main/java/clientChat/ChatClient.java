@@ -4,6 +4,8 @@ package clientChat;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.BoxLayout;
@@ -45,9 +47,11 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("La Chat");
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 2, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Easy SMS");
 
+        btnQuit.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
         btnQuit.setForeground(new java.awt.Color(255, 0, 51));
         btnQuit.setText("ABBANDONA");
         btnQuit.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +60,9 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
             }
         });
 
-        btnSend.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMessage.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
+
+        btnSend.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
         btnSend.setText("Invia");
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,15 +70,19 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
             }
         });
 
+        areaMessage.setAutoscrolls(true);
+        areaMessage.setMaximumSize(new java.awt.Dimension(500, 500));
+        areaMessage.setPreferredSize(new java.awt.Dimension(315, 395));
+
         javax.swing.GroupLayout areaMessageLayout = new javax.swing.GroupLayout(areaMessage);
         areaMessage.setLayout(areaMessageLayout);
         areaMessageLayout.setHorizontalGroup(
             areaMessageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 316, Short.MAX_VALUE)
+            .addGap(0, 315, Short.MAX_VALUE)
         );
         areaMessageLayout.setVerticalGroup(
             areaMessageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGap(0, 395, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(areaMessage);
@@ -84,31 +94,31 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)))
+                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSend)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnQuit)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMessage)
-                    .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(txtMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -133,8 +143,9 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         String msg = txtMessage.getText();
+        String time = getCurrentTime();
         if(!(msg.equals(""))){
-            addMessage(msg);
+            addMessage(msg , time);
             toConnection.println(msg);
             txtMessage.setText("");
         }else{
@@ -163,9 +174,8 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         return this.areaMessage;
     }
     
-    public void addMessage(String message){
-        
-        MessageBox msgBox = new MessageBox("Tu",message);
+    public void addMessage(String message, String time){
+        MessageBox msgBox = new MessageBox("Tu", message, time);
         
         JPanel alignPanel = new JPanel();
         alignPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -178,5 +188,11 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         javax.swing.SwingUtilities.invokeLater(() -> {
             jScrollPane1.getVerticalScrollBar().setValue(jScrollPane1.getVerticalScrollBar().getMaximum());
         });
+    }
+    
+    private String getCurrentTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return now.format(formatter);
     }
 }
