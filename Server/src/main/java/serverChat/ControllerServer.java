@@ -50,8 +50,13 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
         jScrollPane1 = new javax.swing.JScrollPane();
         UJP = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Controller Server");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Server Easy SMS");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -163,12 +168,12 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler chiudere il server?\nTutti gli utenti collegati verranno disconnessi.", "Chiusura server", JOptionPane.YES_NO_OPTION);
-        if(choice == JOptionPane.YES_OPTION){
-            this.dispose();
-            System.exit(0);
-        }
+        closeServer();
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        closeServer();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel UJP;
@@ -212,6 +217,15 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
             
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    
+    // Funzione richiamata quando l'user chiude il server
+    private void closeServer(){
+        int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler chiudere il server?\nTutti gli utenti collegati verranno disconnessi.", "Chiusura server", JOptionPane.YES_NO_OPTION);
+        if(choice == JOptionPane.YES_OPTION){
+            this.dispose();
+            System.exit(0);
         }
     }
     

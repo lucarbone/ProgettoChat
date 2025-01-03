@@ -1,10 +1,22 @@
 package serverChat;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Starter extends javax.swing.JFrame{
 
     ControllerServer C;
     public Starter() {
-        initComponents();
+        try {
+            initComponents();
+            InetAddress localHost = InetAddress.getLocalHost();
+            String ipAddress = localHost.getHostAddress();
+            txtIp.setText(ipAddress);
+        } catch (UnknownHostException ex) {
+            txtIp.setText("127.0.0.1");
+        }
     }
     
     private void play(String ip, int port){
@@ -27,7 +39,7 @@ public class Starter extends javax.swing.JFrame{
         lblError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Server");
+        setTitle("Server Easy SMS");
         setSize(new java.awt.Dimension(330, 500));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -39,8 +51,8 @@ public class Starter extends javax.swing.JFrame{
         jLabel2.setText("IP:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
+        txtIp.setEditable(false);
         txtIp.setBackground(new java.awt.Color(204, 255, 204));
-        txtIp.setText("127.0.0.1");
         txtIp.setToolTipText("");
         txtIp.setCaretColor(new java.awt.Color(255, 255, 255));
 
@@ -138,8 +150,15 @@ public class Starter extends javax.swing.JFrame{
             }
             else{
                 try{
-                    int port = Integer.parseInt(txtPorta.getText()); 
-                    play(ip, port);
+                    int port = Integer.parseInt(txtPorta.getText());
+                    
+                    try{
+                        play(ip, port);
+                    }
+                    catch(Exception err){
+                        lblError.setText("Impossibile lanciare il server,\ninserisci dei dati validi");
+                    }
+                    
                 }
                 catch(Exception e){
                     lblError.setText("Inserisci una porta valida!!");
