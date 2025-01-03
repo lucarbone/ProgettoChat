@@ -1,5 +1,6 @@
 package serverChat;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -8,10 +9,10 @@ import java.util.Scanner;
 
 public class ConnectionThread implements Runnable{
 
-    private Socket connection;
+    public Socket connection;
     private boolean run;
-    private Scanner fromConnection;
-    private PrintWriter toConnection;
+    public Scanner fromConnection;
+    public PrintWriter toConnection;
     private static ArrayList<ConnectionThread> connectionsList = new ArrayList<>(); // Lista delle connessioni
     private ConnectionsList cl;
     private String userName; //  Nickname del client connesso
@@ -44,11 +45,39 @@ public class ConnectionThread implements Runnable{
                 
                 case ("data"):{
                     Date d = new Date();
-                    toConnection.println("server: "+d);
+                    toConnection.println(d);
+                    break;
+                }
+                case ("utenti"):{
+                    int nUsers = connectionsList.size()-1;
+                    String str = "";
+                    if(nUsers==0){
+                        str = "In questo server sei connesso solamente tu :(";
+                    }
+                    else{
+                        str = "In questo server sono connessi, oltre a te, "+nUsers+" utenti. Ecco i loro nickname: ";
+                        for (ConnectionThread ct : connectionsList) {
+                            if (ct.connection!=this.connection) {
+                                    str+=ct.getUsername()+" ";
+                            }
+                        }
+                    }
+                    toConnection.println(str);
                     break;
                 }
                 case ("exit"):{
-                    System.out.println("Connessione chiusa");
+                    for (ConnectionThread ct : connectionsList) {
+                        try {
+                            if (ct.connection!=this.connection) {
+                                this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
+                                toConnection.println(this.userName+" ha abbandonato la chat");
+                            }
+                        
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            }
+                        }
+                    this.resetOutputStream();
                     this.connectionsList.remove(this);
                     this.run = false;
                     cl.RedrawPannel();
@@ -71,6 +100,18 @@ public class ConnectionThread implements Runnable{
                     if(userAvailable){
                         this.userName=userMSG;
                         toConnection.println("y");
+                        for (ConnectionThread ct : connectionsList) {
+                            try {
+                                if (ct.connection!=this.connection) {
+                                    this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
+                                    toConnection.println(userMSG+" si e' connesso alla chat");
+                                }
+                        
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        this.resetOutputStream();
                         cl.RedrawPannel();
                     }
                     else{
@@ -78,20 +119,31 @@ public class ConnectionThread implements Runnable{
                     }
                     break;
                 }
+                
+                // Viene inviato il messaggio a tutti i client
                 default:{
-                    
+                    for (ConnectionThread ct : connectionsList) {
+                        try {
+                            if (ct.connection!=this.connection) {
+                                this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
+                                toConnection.println(userMSG);
+                            }
+                        
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            }
+                        }
+                    this.resetOutputStream();
                     break;
                 }
-
             }
-           
         }
         this.connectionsList.remove(this);
     }
     
     // Quando il server decide di bannare un client
     public void kickUser(){
-        run=false;
+        //run=false;
         //toConnection.print("expulsed!");
     }
     
@@ -104,6 +156,14 @@ public class ConnectionThread implements Runnable{
     }
     public void setupdate(ConnectionsList cl){
         this.cl = cl;
+    }
+    
+    public void resetOutputStream(){
+        try {
+            this.toConnection = new PrintWriter(this.connection.getOutputStream(),true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public int getConnectionsListSize(){return this.connectionsList.size();}
