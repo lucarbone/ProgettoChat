@@ -1,7 +1,7 @@
 
 package clientChat;
 
-import java.awt.BorderLayout;
+
 import java.awt.FlowLayout;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -37,12 +37,24 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnQuit = new javax.swing.JButton();
         txtMessage = new javax.swing.JTextField();
         btnSend = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaMessage = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("La Chat");
@@ -71,7 +83,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         });
 
         areaMessage.setAutoscrolls(true);
-        areaMessage.setMaximumSize(new java.awt.Dimension(500, 500));
+        areaMessage.setMaximumSize(new java.awt.Dimension(1000000000, 1000000000));
         areaMessage.setPreferredSize(new java.awt.Dimension(315, 395));
 
         javax.swing.GroupLayout areaMessageLayout = new javax.swing.GroupLayout(areaMessage);
@@ -160,6 +172,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private javax.swing.JButton btnQuit;
     private javax.swing.JButton btnSend;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtMessage;
     // End of variables declaration//GEN-END:variables
@@ -178,7 +191,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         MessageBox msgBox = new MessageBox("Tu", message, time);
         
         JPanel alignPanel = new JPanel();
-        alignPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        alignPanel.setLayout(new FlowLayout(FlowLayout.RIGHT,5,5));
         alignPanel.add(msgBox);
         
         areaMessage.add(alignPanel);
