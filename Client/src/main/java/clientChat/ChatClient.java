@@ -12,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class ChatClient extends javax.swing.JFrame implements Runnable{
@@ -27,7 +28,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
 
         this.fromConnection = fc;
         this.toConnection = tc;
-        gct = new GlobalChatThread(this.getTxtPanel(),fc);
+        gct = new GlobalChatThread(this.getTxtPanel(),fc, this.getScrlPanel());
         
         Thread t = new Thread(gct);
         t.start();
@@ -155,7 +156,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         String msg = txtMessage.getText();
         String time = getCurrentTime();
-        if(!(msg.equals(""))){
+        if(!(msg.equals("")) && !(msg.equals("exit"))){
             addMessage(msg , time);
             toConnection.println(msg);
             txtMessage.setText("");
@@ -199,6 +200,10 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         return this.areaMessage;
     }
     
+    public JScrollPane getScrlPanel(){
+        return this.jScrollPane1;
+    }
+    
     public void addMessage(String message, String time){
         MessageBox msgBox = new MessageBox("Tu", message, time);
         
@@ -210,9 +215,11 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         areaMessage.revalidate();
         areaMessage.repaint();
         
+        
         javax.swing.SwingUtilities.invokeLater(() -> {
             jScrollPane1.getVerticalScrollBar().setValue(jScrollPane1.getVerticalScrollBar().getMaximum());
         });
+
     }
     
     private String getCurrentTime() {

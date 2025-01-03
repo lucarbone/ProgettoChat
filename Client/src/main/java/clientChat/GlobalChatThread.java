@@ -8,19 +8,23 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class GlobalChatThread implements Runnable{
 
-    private JPanel areaMessage = new JPanel();
+    private JPanel areaMessage;
+    private JScrollPane scrollPane;
     private Scanner fromConnection;
     private String message;
     private String time;
     
-    public GlobalChatThread(JPanel pnl, Scanner fc){
+    public GlobalChatThread(JPanel pnl, Scanner fc, JScrollPane jsp){
         areaMessage = new JPanel();
         areaMessage = pnl;
+        scrollPane = new JScrollPane();
+        scrollPane = jsp;
         fromConnection = fc;
         
     }
@@ -48,6 +52,10 @@ public class GlobalChatThread implements Runnable{
         areaMessage.revalidate();
         areaMessage.repaint();
         
+        
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            this.scrollPane.getVerticalScrollBar().setValue(this.scrollPane.getVerticalScrollBar().getMaximum());
+        });
         
     }
     private String getCurrentTime() {
