@@ -52,7 +52,7 @@ public class ConnectionsList implements Runnable{
         numberUsersLabel.setText("Utenti Connessi: "+this.currentCT.getConnectionsListSize());
             
         for(int i = 0;i<this.currentCT.getConnectionsListSize();i++){
-                Utente u = new Utente(i,usersList.get(i).getUsername(),usersList.get(i).getAddress());
+                Utente u = new Utente(i,usersList.get(i).getUsername(),usersList.get(i).getAddress(), usersList.get(i));
                 utenti.add(u);
                 utenti.get(i).setBounds(10,(((i)*40)+10),285,35);
                 connectionsPanel.add(utenti.get(i));

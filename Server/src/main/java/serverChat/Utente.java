@@ -9,12 +9,14 @@ public class Utente extends javax.swing.JPanel {
     private String userName="";
     private String userIP="";
     private boolean Expelled=false;
+    private ConnectionThread user;
     
-    public Utente(int userIndex, String userName, String userIP) {
+    public Utente(int userIndex, String userName, String userIP, ConnectionThread ct) {
         initComponents();
         this.userIndex = userIndex;
         this.userName = userName;
         this.userIP = userIP;
+        user = ct;
         if(userName.equals("")){
             //nomeJL.setText(userIndex +": N/A");
             nomeJL.setText("N/A");
@@ -74,7 +76,7 @@ public class Utente extends javax.swing.JPanel {
 
     private void KickJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KickJBActionPerformed
         System.out.println("pulsante numero: " + userIndex);
-        
+        user.kickUser();
     }//GEN-LAST:event_KickJBActionPerformed
 
    
