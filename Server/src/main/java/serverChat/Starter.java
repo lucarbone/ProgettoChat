@@ -42,31 +42,37 @@ public class Starter extends javax.swing.JFrame{
         setTitle("Server Easy SMS");
         setSize(new java.awt.Dimension(330, 500));
 
-        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Easy SMS Server");
 
         jLabel2.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("IP:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
         txtIp.setEditable(false);
         txtIp.setBackground(new java.awt.Color(204, 255, 204));
         txtIp.setToolTipText("");
+        txtIp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtIp.setCaretColor(new java.awt.Color(255, 255, 255));
 
         jLabel3.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel3.setText("Porta:");
         jLabel3.setFocusable(false);
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
         txtPorta.setBackground(new java.awt.Color(204, 255, 204));
         txtPorta.setText("8080");
+        txtPorta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPorta.setCaretColor(new java.awt.Color(255, 255, 255));
 
+        jToggleButton1.setBackground(new java.awt.Color(204, 255, 204));
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jToggleButton1.setText("LANCIA SERVER");
+        jToggleButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -81,10 +87,6 @@ public class Starter extends javax.swing.JFrame{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +101,9 @@ public class Starter extends javax.swing.JFrame{
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtPorta, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -120,11 +124,11 @@ public class Starter extends javax.swing.JFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(141, 141, 141)
+                .addGap(40, 40, 40)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                .addGap(34, 34, 34))
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel2.getAccessibleContext().setAccessibleName("IP");

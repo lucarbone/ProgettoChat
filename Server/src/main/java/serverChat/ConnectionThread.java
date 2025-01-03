@@ -16,8 +16,7 @@ public class ConnectionThread implements Runnable{
     private ConnectionsList cl;
     private String userName; //  Nickname del client connesso
     private String userMSG; // Messaggio in arrivo dal client connesso
-    private boolean Redraw = false; // Utilizzato per riferire al connection list che bisogna ridisegnare il panello,
-                             //dato che è stato inserito un nuovo nome
+    
     
     public ConnectionThread(Socket c, ConnectionsList cl){
         this.connection = c;

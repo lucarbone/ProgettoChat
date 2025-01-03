@@ -1,10 +1,12 @@
 package serverChat;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class ConnectionsList implements Runnable{
 
@@ -41,12 +43,14 @@ public class ConnectionsList implements Runnable{
     
     public void RedrawPannel(){
         this.currentCT = this.updatedCT;
+        connectionsPanel.setPreferredSize(new Dimension(320,((this.currentCT.getConnectionsListSize()*45))));    
         connectionsPanel.removeAll(); // Rimuove tutti i componenti dal pannello
         connectionsPanel.revalidate(); // Aggiorna il layout
         connectionsPanel.repaint();
         utenti.clear();
 
-        numberUsersLabel.setText(""+this.currentCT.getConnectionsListSize());
+        numberUsersLabel.setText("Utenti Connessi: "+this.currentCT.getConnectionsListSize());
+            
         for(int i = 0;i<this.currentCT.getConnectionsListSize();i++){
                 Utente u = new Utente(i,usersList.get(i).getUsername(),usersList.get(i).getAddress());
                 utenti.add(u);
