@@ -12,7 +12,6 @@ public class ClientStart extends javax.swing.JFrame {
     Socket connection;
     
     public ClientStart() {
-        InetAddress serverAddress;
         initComponents();
     }
     
@@ -143,8 +142,8 @@ public class ClientStart extends javax.swing.JFrame {
             }
             
             try{
-                InetAddress serverAddress = InetAddress.getLocalHost();
-                Socket connection = new Socket(serverAddress, this.serverPort);
+               
+                this.connection = new Socket(this.serverIP, this.serverPort);
             
                 Scanner fromConnection = new Scanner(connection.getInputStream());
                 PrintWriter toConnection = new PrintWriter(connection.getOutputStream(),true);
@@ -157,7 +156,7 @@ public class ClientStart extends javax.swing.JFrame {
                 
             }
             catch(Exception e){
-                e.printStackTrace();
+                //e.printStackTrace();
                 lblError.setText("C'è stato un errore durante l'accesso al server");
             }
             

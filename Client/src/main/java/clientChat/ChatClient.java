@@ -33,8 +33,8 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         txtMessage = new javax.swing.JTextField();
         btnSend = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("La Chat");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Easy SMS");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 DisconnectU(evt);
