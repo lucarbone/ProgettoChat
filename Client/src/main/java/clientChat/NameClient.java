@@ -3,6 +3,7 @@ package clientChat;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class NameClient extends javax.swing.JFrame {
     
@@ -29,11 +30,16 @@ public class NameClient extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Easy SMS");
         setMaximumSize(new java.awt.Dimension(350, 420));
         setPreferredSize(new java.awt.Dimension(330, 390));
         setSize(new java.awt.Dimension(320, 325));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         txtTitle.setBackground(new java.awt.Color(204, 204, 255));
         txtTitle.setFont(new java.awt.Font("Verdana", 2, 18)); // NOI18N
@@ -140,6 +146,15 @@ public class NameClient extends javax.swing.JFrame {
     private void txtNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNameMouseClicked
         txtName.setText("");
     }//GEN-LAST:event_txtNameMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di abbandonare la chat?", "Abbandona chat", JOptionPane.YES_NO_OPTION);
+        if(choice == JOptionPane.YES_OPTION){
+            this.toConnection.println("exit");
+            this.dispose();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     public void setConnections(Scanner fc, PrintWriter tc){
         this.fromConnection=fc;

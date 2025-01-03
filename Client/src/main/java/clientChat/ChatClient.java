@@ -58,6 +58,11 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Easy SMS");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Verdana", 2, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -145,12 +150,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     
     // L'utente abbandona la chat
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
-        int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di abbandonare la chat?", "Abbandona chat", JOptionPane.YES_NO_OPTION);
-        if(choice == JOptionPane.YES_OPTION){
-            this.toConnection.println("exit");
-            this.dispose();
-            System.exit(0);
-        }
+        userQuit();
     }//GEN-LAST:event_btnQuitActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
@@ -165,6 +165,10 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         }
         
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        userQuit();
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -181,6 +185,15 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     @Override
     public void run() {
        
+    }
+    
+    private void userQuit(){
+        int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di abbandonare la chat?", "Abbandona chat", JOptionPane.YES_NO_OPTION);
+        if(choice == JOptionPane.YES_OPTION){
+            this.toConnection.println("exit");
+            this.dispose();
+            System.exit(0);
+        }
     }
     
     public JPanel getTxtPanel(){
