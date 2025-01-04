@@ -65,11 +65,15 @@ public class ConnectionThread implements Runnable{
                             str = "In questo server sono connessi, oltre a te, "+nUsers+" utenti. Ecco i loro nickname: ";
                             for (ConnectionThread ct : connectionsList) {
                                 if (ct.connection!=this.connection) {
-                                        str+=ct.getUsername()+" ";
+                                        str+=ct.getUsername()+", ";
                                 }
                             }
                         }
                         toConnection.println("Server-"+str);
+                        break;
+                    }
+                    case ("help"):{
+                        toConnection.println("Server-"+"Ecco l'elenco dei comandi disponibili: help->apre questa sezione utenti->stampa l'elenco degli utenti connessi data->restituisce la data corrente");
                         break;
                     }
                     case ("exit"):{

@@ -60,22 +60,21 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
         });
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 2, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Easy SMS Server");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Server Online ");
 
-        NUsers.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        NUsers.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
         NUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NUsers.setText("Utenti Connessi: 0");
-        NUsers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnClose.setBackground(new java.awt.Color(255, 204, 204));
-        btnClose.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        btnClose.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
         btnClose.setText("CHIUDI SERVER");
         btnClose.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -84,17 +83,18 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
             }
         });
 
-        lblIp.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        lblIp.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
         lblIp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIp.setText("Ip:");
 
-        lblPorta.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        lblPorta.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
         lblPorta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPorta.setText("Porta:");
 
         JSP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         JSP.setPreferredSize(new java.awt.Dimension(321, 1002));
 
+        UJP.setBackground(new java.awt.Color(255, 255, 255));
         UJP.setMaximumSize(new java.awt.Dimension(320, 2000));
         UJP.setMinimumSize(new java.awt.Dimension(320, 150));
         UJP.setPreferredSize(new java.awt.Dimension(319, 150));
@@ -108,7 +108,7 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
         );
         UJPLayout.setVerticalGroup(
             UJPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 188, Short.MAX_VALUE)
+            .addGap(0, 186, Short.MAX_VALUE)
         );
 
         JSP.setViewportView(UJP);
@@ -121,11 +121,8 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(JSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(14, 14, 14)
+                        .addComponent(JSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 3, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -134,13 +131,16 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPorta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(NUsers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                        .addComponent(NUsers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblIp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +162,7 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                         .addGap(37, 37, 37)
                         .addComponent(NUsers)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JSP, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addComponent(JSP, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(73, 73, 73))))
