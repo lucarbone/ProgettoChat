@@ -2,10 +2,14 @@ package serverChat;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConnectionThread implements Runnable{
 
@@ -42,14 +46,13 @@ public class ConnectionThread implements Runnable{
         while(this.run){
             
             userMSG = this.fromConnection.nextLine();
-            if(Ban){
-                
-            }else{
+            
+            if(!Ban){
                 switch(userMSG){
 
                     case ("data"):{
                         Date d = new Date();
-                        toConnection.println(d);
+                        toConnection.println("Server-"+d);
                         break;
                     }
                     case ("utenti"):{
@@ -66,7 +69,7 @@ public class ConnectionThread implements Runnable{
                                 }
                             }
                         }
-                        toConnection.println(str);
+                        toConnection.println("Server-"+str);
                         break;
                     }
                     case ("exit"):{
@@ -74,7 +77,7 @@ public class ConnectionThread implements Runnable{
                             try {
                                 if (ct.connection!=this.connection) {
                                     this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
-                                    toConnection.println(this.userName+" ha abbandonato la chat");
+                                    toConnection.println("Server-"+this.userName+" ha abbandonato la chat");
                                 }
 
                             } catch (Exception e) {
@@ -90,9 +93,9 @@ public class ConnectionThread implements Runnable{
 
                     // All'utente viene assegnato l'username, se è già stato utilizzato viene bloccato
                     case ("nameinserting"):{
-                        System.out.println("richiesta nome");
+                        
                         userMSG = this.fromConnection.nextLine();
-                        System.out.println("nome ricevuto");
+                        
                         boolean userAvailable = true;
                         for(ConnectionThread ct : connectionsList){
                             if(ct.getUsername().equals(userMSG)){
@@ -108,7 +111,7 @@ public class ConnectionThread implements Runnable{
                                 try {
                                     if (ct.connection!=this.connection) {
                                         this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
-                                        toConnection.println(userMSG+" si e' connesso alla chat");
+                                        toConnection.println("Server-"+userMSG+" si e' connesso alla chat");
                                     }
 
                                 } catch (Exception e) {
@@ -130,18 +133,18 @@ public class ConnectionThread implements Runnable{
                             try {
                                 if (ct.connection!=this.connection) {
                                     this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
-                                    toConnection.println(userMSG);
+                                    toConnection.println(this.userName+"-"+userMSG);
                                 }
-
-                            } catch (Exception e) {
+                            } 
+                            catch (Exception e) {
                                 e.printStackTrace();
-                                }
                             }
+                        }
                         this.resetOutputStream();
                         break;
                     }
                 }
-            }//FINE IF-ELSE
+            }
         }
         this.connectionsList.remove(this);
         cl.RedrawPannel();
@@ -149,15 +152,44 @@ public class ConnectionThread implements Runnable{
     
     // Quando il server decide di bannare un client
     public void kickUser(){
-        toConnection.println("sei stato bannato");
+        toConnection.println("Server-"+"Sei stato bannato dal server.");
         this.connectionsList.remove(this);
+        
+        for (ConnectionThread ct : connectionsList) {
+            try {
+                this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
+                toConnection.println("Server-"+this.userName+" e' stato bannato dalla chat.");
+            } catch (IOException ex) {
+            }
+            this.resetOutputStream();
+        }
+                
         cl.RedrawPannel();
         this.run = false;
         Ban = true;
     }
     
+    public void sendCloseMessage(){
+        for (ConnectionThread ct : connectionsList) {
+            try {
+                this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
+                toConnection.println("Server-Il server è stato chiuso, tutti gli utenti sono stati disconnessi");
+            } catch (IOException ex) {
+            }
+            this.resetOutputStream();
+        }
+    }
+    
     public String getUsername(){return this.userName;}
-    public String getAddress(){return (this.connection.getInetAddress()+"");}
+    public String getAddress(){
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            String ipAddress = localHost.getHostAddress();
+            return ipAddress;
+        } catch (UnknownHostException ex) {
+            return "errore";
+        }
+    }
     
     
     public ConnectionsList getupdate(){

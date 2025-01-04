@@ -40,6 +40,7 @@ public class Starter extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Server Easy SMS");
+        setResizable(false);
         setSize(new java.awt.Dimension(330, 500));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
@@ -157,7 +158,12 @@ public class Starter extends javax.swing.JFrame{
                     int port = Integer.parseInt(txtPorta.getText());
                     
                     try{
-                        play(ip, port);
+                        if(port<=1023 || port>=65535){
+                            lblError.setText("Inserisci una porta valida!!");
+                        }
+                        else{
+                            play(ip, port);
+                        }
                     }
                     catch(Exception err){
                         lblError.setText("Impossibile lanciare il server,\ninserisci dei dati validi");

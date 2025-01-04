@@ -52,6 +52,7 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Server Easy SMS");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -211,6 +212,7 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                  * Parte il thread che gestisce la connessione
                  */
                 ConnectionThread connectionThread = new ConnectionThread(connection, cl);
+                this.ct = connectionThread;
                 cl.updateConnections(connectionThread);
                 Thread t = new Thread(connectionThread);
                 t.start();
@@ -227,6 +229,7 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
     private void closeServer(){
         int choice = JOptionPane.showConfirmDialog(null, "Sei sicuro di voler chiudere il server?\nTutti gli utenti collegati verranno disconnessi.", "Chiusura server", JOptionPane.YES_NO_OPTION);
         if(choice == JOptionPane.YES_OPTION){
+            ct.sendCloseMessage();
             this.dispose();
             System.exit(0);
         }
