@@ -1,9 +1,11 @@
 clientChat\ChatClient.class
+clientChat\ClientStart$3.class
 clientChat\NameClient$3.class
 clientChat\MessageBox.class
 clientChat\ChatClient$1.class
 clientChat\ChatClient$2.class
 clientChat\Client.class
+clientChat\ClientStart$4.class
 clientChat\NameClient$4.class
 clientChat\ChatClient$3.class
 clientChat\ClientStart.class

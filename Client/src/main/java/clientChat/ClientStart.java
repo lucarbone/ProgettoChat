@@ -50,6 +50,11 @@ public class ClientStart extends javax.swing.JFrame {
         txtIp.setBackground(new java.awt.Color(204, 255, 204));
         txtIp.setText("127.0.0.1");
         txtIp.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtIp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtIpMouseClicked(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(153, 153, 255));
         jLabel3.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
@@ -59,6 +64,11 @@ public class ClientStart extends javax.swing.JFrame {
         txtPorta.setBackground(new java.awt.Color(204, 255, 204));
         txtPorta.setText("8080");
         txtPorta.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtPorta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPortaMouseClicked(evt);
+            }
+        });
 
         btnConnection.setBackground(new java.awt.Color(204, 255, 204));
         btnConnection.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
@@ -79,20 +89,19 @@ public class ClientStart extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtIp, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnConnection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtPorta, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))))
-                        .addGap(0, 63, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(3, 3, 3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnConnection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPorta, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(txtIp))
+                        .addGap(0, 66, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,9 +115,11 @@ public class ClientStart extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblClientChat, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtIp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,13 +152,16 @@ public class ClientStart extends javax.swing.JFrame {
                 lblError.setText("Inserisci un'indirizzo ip valido!!");
             }
             else{
+                
                 try{
                     this.serverPort = Integer.parseInt(txtPorta.getText());
                     if(this.serverPort<1023 || this.serverPort>65535){
                         lblError.setText("Inserisci una porta valida!!");
                     }
                     else{
+                        
                         try{
+                            
                             Socket connection = new Socket(this.serverIP, this.serverPort);
             
                             Scanner fromConnection = new Scanner(connection.getInputStream());
@@ -178,6 +192,14 @@ public class ClientStart extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnConnectionActionPerformed
+
+    private void txtIpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIpMouseClicked
+        lblError.setText("");
+    }//GEN-LAST:event_txtIpMouseClicked
+
+    private void txtPortaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPortaMouseClicked
+        lblError.setText("");
+    }//GEN-LAST:event_txtPortaMouseClicked
 
     public void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -133,6 +133,9 @@ public class NameClient extends javax.swing.JFrame {
             if(txtName.getText().equals("") || txtName.getText().equals("Nickname")){
                 lblError.setText("Inserisci un nome!");
             }
+            else if(txtName.getText().contains("-")){
+                lblError.setText("Il simbolo '-' non è concesso.");
+            }
             else{
                 toConnection.println("nameinserting");
                 toConnection.println(txtName.getText());
@@ -153,6 +156,7 @@ public class NameClient extends javax.swing.JFrame {
 
     private void txtNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNameMouseClicked
         txtName.setText("");
+        lblError.setText("");
     }//GEN-LAST:event_txtNameMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
