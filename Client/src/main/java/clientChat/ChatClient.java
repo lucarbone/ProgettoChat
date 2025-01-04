@@ -59,6 +59,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Easy SMS");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -79,6 +80,11 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
         });
 
         txtMessage.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
+        txtMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMessageActionPerformed(evt);
+            }
+        });
 
         btnSend.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
         btnSend.setText("Invia");
@@ -169,6 +175,12 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         userQuit();
     }//GEN-LAST:event_formWindowClosing
+
+    private void txtMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMessageActionPerformed
+        btnSend.requestFocusInWindow();
+        btnSend.doClick();
+        txtMessage.requestFocusInWindow();
+    }//GEN-LAST:event_txtMessageActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

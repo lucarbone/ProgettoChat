@@ -11,5 +11,6 @@ clientChat\ClientStart$1.class
 clientChat\GlobalChatThread.class
 clientChat\NameClient$1.class
 clientChat\NameClient.class
+clientChat\ChatClient$4.class
 clientChat\ClientStart$2.class
 clientChat\NameClient$2.class

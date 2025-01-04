@@ -32,17 +32,48 @@ public class GlobalChatThread implements Runnable{
     @Override
     public void run() {
         while(true){
-            message = fromConnection.nextLine();
+            try{
+                message = fromConnection.nextLine();
             
-            time = getCurrentTime();
-            addMessage(message, time);
+                time = getCurrentTime();
+                addMessage(message, time);
+            }
+            catch(Exception e){
+                break;
+            }
+            
         }
     }
     
     public void addMessage(String message, String time){
         
-        MessageBox msgBox = new MessageBox("Server ",message, time);
-        msgBox.setColor(Color.cyan);
+        // Riconoscimento autore messaggio
+        int msgLength = message.length();
+        char messageToArray[] = new char[msgLength];
+        messageToArray = message.toCharArray();
+        
+        String messageAuthor = "";
+        String messageContent = "";
+        
+        boolean authorPassed = false;
+        
+        for(int i=0; i<msgLength;i++){
+            if(!authorPassed){
+                if(messageToArray[i]=='-'){
+                    authorPassed=true;
+                }
+                else{
+                    messageAuthor+=messageToArray[i];
+                }
+            }
+            else{
+                messageContent+=messageToArray[i];
+            }
+        }
+        
+        
+        MessageBox msgBox = new MessageBox(messageAuthor,messageContent, time);
+        msgBox.setColor(Color.lightGray);
         
         JPanel alignPanel = new JPanel();
         alignPanel.setLayout(new FlowLayout(FlowLayout.LEFT));

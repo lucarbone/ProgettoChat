@@ -34,6 +34,7 @@ public class NameClient extends javax.swing.JFrame {
         setTitle("Easy SMS");
         setMaximumSize(new java.awt.Dimension(350, 420));
         setPreferredSize(new java.awt.Dimension(330, 390));
+        setResizable(false);
         setSize(new java.awt.Dimension(320, 325));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {

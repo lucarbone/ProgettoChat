@@ -34,6 +34,7 @@ public class ClientStart extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Easy SMS");
+        setResizable(false);
         setSize(new java.awt.Dimension(320, 330));
 
         lblClientChat.setBackground(new java.awt.Color(204, 204, 255));
@@ -141,30 +142,37 @@ public class ClientStart extends javax.swing.JFrame {
             }
             else{
                 try{
-                    this.serverPort = Integer.parseInt(txtPorta.getText()); 
+                    this.serverPort = Integer.parseInt(txtPorta.getText());
+                    if(this.serverPort<1023 || this.serverPort>65535){
+                        lblError.setText("Inserisci una porta valida!!");
+                    }
+                    else{
+                        try{
+                            Socket connection = new Socket(this.serverIP, this.serverPort);
+            
+                            Scanner fromConnection = new Scanner(connection.getInputStream());
+                            PrintWriter toConnection = new PrintWriter(connection.getOutputStream(),true);
+                
+                
+                            NameClient c = new NameClient();
+                            c.setConnections(fromConnection, toConnection);
+                            play(c);
+                
+                
+                        }
+                        catch(Exception e){
+                            e.printStackTrace();
+                            lblError.setText("C'è stato un errore durante l'accesso al server");
+                        }
+                    
+                    }
                 }
                 catch(Exception e){
                     lblError.setText("Inserisci una porta valida!!");
                 }
             }
             
-            try{
-                Socket connection = new Socket(this.serverIP, this.serverPort);
             
-                Scanner fromConnection = new Scanner(connection.getInputStream());
-                PrintWriter toConnection = new PrintWriter(connection.getOutputStream(),true);
-                
-                
-                NameClient c = new NameClient();
-                c.setConnections(fromConnection, toConnection);
-                play(c);
-                
-                
-            }
-            catch(Exception e){
-                e.printStackTrace();
-                lblError.setText("C'è stato un errore durante l'accesso al server");
-            }
             
             
         }
