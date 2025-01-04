@@ -202,7 +202,7 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                 
                 Socket connection = myServer.accept();
                 System.out.println("Connessione stabilita");
-
+               
                 // informazioni del client connesso
                 String clientIP = connection.getInetAddress().getHostAddress();
                 int clientPort = connection.getPort();
@@ -217,7 +217,6 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
                 Thread t = new Thread(connectionThread);
                 t.start();
                 connectionThread.setupdate(cl);
-                
             }
             
         } catch (Exception e) {
@@ -241,9 +240,5 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
     public JLabel getNUsersLabel(){
         return this.NUsers;
     }
-    
-    
-    
-    
     
 }

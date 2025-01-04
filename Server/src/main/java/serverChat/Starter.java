@@ -13,46 +13,46 @@ public class Starter extends javax.swing.JFrame{
     public Starter() {
         try {
             initComponents();
-            
+
             // Prendiamo l'indirizzo locale del pc
             InetAddress localHost = InetAddress.getLocalHost();
             String ipAddress = localHost.getHostAddress();
-            
-            
+            // System.out.println("");
+
             // Prendiamo l'indirizzo del pc riferito alla rete a cui è connesso
-        try {
-            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+            try {
+                Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
 
-            while (networkInterfaces.hasMoreElements()) {
-                NetworkInterface networkInterface = networkInterfaces.nextElement();
+                while (networkInterfaces.hasMoreElements()) {
+                    NetworkInterface networkInterface = networkInterfaces.nextElement();
 
-                // Ignorare le interfacce che non sono attive o sono di loopback
-                if (!networkInterface.isUp() || networkInterface.isLoopback()) {
-                    continue;
-                }
+                    // Ignorare le interfacce che non sono attive o sono di loopback
+                    if (!networkInterface.isUp() || networkInterface.isLoopback()) {
+                        continue;
+                    }
 
-                Enumeration<InetAddress> inetAddresses = networkInterface.getInetAddresses();
-                while (inetAddresses.hasMoreElements()) {
-                    InetAddress inetAddress = inetAddresses.nextElement();
+                    Enumeration<InetAddress> inetAddresses = networkInterface.getInetAddresses();
+                    while (inetAddresses.hasMoreElements()) {
+                        InetAddress inetAddress = inetAddresses.nextElement();
 
-                    if (!(inetAddress.isLoopbackAddress() || inetAddress.isLinkLocalAddress() || inetAddress.isMulticastAddress() || inetAddress.getHostAddress().equals(ipAddress))) {
-                        System.out.println("Interfaccia: " + networkInterface.getName());
-                        System.out.println("Indirizzo IP: " + inetAddress.getHostAddress());
-                        txtIp.setText(inetAddress.getHostAddress());
-                        break;
+                        if (!(inetAddress.isLoopbackAddress() || inetAddress.isLinkLocalAddress() || inetAddress.isMulticastAddress() || inetAddress.getHostAddress().equals(ipAddress))) {
+                            System.out.println("Interfaccia: " + networkInterface.getName());
+                            System.out.println("Indirizzo IP: " + inetAddress.getHostAddress());
+                            txtIp.setText(inetAddress.getHostAddress());
+                            break;
+                        }
                     }
                 }
+            } catch (Exception e) {
+                System.err.println("Errore durante il recupero degli indirizzi IP: " + e.getMessage());
             }
-        } catch (Exception e) {
-            System.err.println("Errore durante il recupero degli indirizzi IP: " + e.getMessage());
-        }
-            
-            
-            
-        } catch (UnknownHostException ex) {
+
+        } 
+        catch (UnknownHostException ex) {
             txtIp.setText("127.0.0.1");
         }
     }
+
     
     private void play(String ip, int port){
         C = new ControllerServer(ip, port);
@@ -179,7 +179,7 @@ public class Starter extends javax.swing.JFrame{
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         String ip = txtIp.getText();
         
-        // Verifichiuamo che l'utente abbia inserito dei valori 
+        // Verifichiamo che l'utente abbia inserito dei valori 
         if(ip.equals("") || txtPorta.getText().equals("")){
             lblError.setText("Inserisci dei valori!!");
         }
