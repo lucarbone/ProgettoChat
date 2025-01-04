@@ -71,22 +71,24 @@ public class GlobalChatThread implements Runnable{
             }
         }
         
+        if(!(messageAuthor.equals("y") && messageContent.equals(""))){
+            MessageBox msgBox = new MessageBox(messageAuthor,messageContent, time);
+            msgBox.setColor(Color.lightGray);
         
-        MessageBox msgBox = new MessageBox(messageAuthor,messageContent, time);
-        msgBox.setColor(Color.lightGray);
+            JPanel alignPanel = new JPanel();
+            alignPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+            alignPanel.add(msgBox);
         
-        JPanel alignPanel = new JPanel();
-        alignPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        alignPanel.add(msgBox);
-        
-        areaMessage.add(alignPanel);
-        areaMessage.revalidate();
-        areaMessage.repaint();
+            areaMessage.add(alignPanel);
+            areaMessage.revalidate();
+            areaMessage.repaint();
         
         
-        javax.swing.SwingUtilities.invokeLater(() -> {
-            this.scrollPane.getVerticalScrollBar().setValue(this.scrollPane.getVerticalScrollBar().getMaximum());
-        });
+            javax.swing.SwingUtilities.invokeLater(() -> {
+                this.scrollPane.getVerticalScrollBar().setValue(this.scrollPane.getVerticalScrollBar().getMaximum());
+            });
+        }
+        
         
     }
     private String getCurrentTime() {

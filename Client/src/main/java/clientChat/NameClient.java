@@ -2,6 +2,9 @@
 package clientChat;
 
 import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -126,22 +129,26 @@ public class NameClient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectActionPerformed
-        
-        if(txtName.getText().equals("") || txtName.getText().equals("Nickname")){
-            lblError.setText("Inserisci un nome!");
-        }
-        else{
-            toConnection.println("nameinserting");
-            toConnection.println(txtName.getText());
-            if(fromConnection.nextLine().equals("no")){
-                lblError.setText("Nickname già in uso, scegline un altro");
+        try{
+            if(txtName.getText().equals("") || txtName.getText().equals("Nickname")){
+                lblError.setText("Inserisci un nome!");
             }
             else{
-                ChatClient chatClient = new ChatClient(fromConnection, toConnection);
-                play(chatClient);
+                toConnection.println("nameinserting");
+                toConnection.println(txtName.getText());
+                if(fromConnection.nextLine().equals("no")){
+                    lblError.setText("Nickname già in uso, scegline un altro");
+                }
+                else{
+                    ChatClient chatClient = new ChatClient(fromConnection, toConnection);
+                    play(chatClient);
+                }
             }
-            
         }
+        catch(Exception e){
+            lblError.setText("Il server è stato chiuso");
+        }
+        
     }//GEN-LAST:event_btnConnectActionPerformed
 
     private void txtNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNameMouseClicked
