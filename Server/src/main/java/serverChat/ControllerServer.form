@@ -104,7 +104,7 @@
           <Font name="Segoe UI" size="18" style="2"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value=" Server Della Chat"/>
+        <Property name="text" type="java.lang.String" value="Easy SMS Server"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

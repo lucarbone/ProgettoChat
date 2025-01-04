@@ -21,10 +21,12 @@ public class ConnectionThread implements Runnable{
     private ConnectionsList cl;
     private String userName; //  Nickname del client connesso
     private String userMSG; // Messaggio in arrivo dal client connesso
+    private String userIP;
     private Boolean Ban = false; 
     
     
     public ConnectionThread(Socket c, ConnectionsList cl){
+        this.userIP = "";
         this.connection = c;
         this.run = true;
         this.userName = "";
@@ -107,6 +109,7 @@ public class ConnectionThread implements Runnable{
                         if(userAvailable){
                             this.userName=userMSG;
                             toConnection.println("y");
+                            userIP = fromConnection.nextLine();
                             for (ConnectionThread ct : connectionsList) {
                                 try {
                                     if (ct.connection!=this.connection) {
@@ -182,13 +185,7 @@ public class ConnectionThread implements Runnable{
     
     public String getUsername(){return this.userName;}
     public String getAddress(){
-        try {
-            InetAddress localHost = InetAddress.getLocalHost();
-            String ipAddress = localHost.getHostAddress();
-            return ipAddress;
-        } catch (UnknownHostException ex) {
-            return "errore";
-        }
+        return userIP;
     }
     
     

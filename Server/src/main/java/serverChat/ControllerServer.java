@@ -62,7 +62,7 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
         jLabel1.setBackground(new java.awt.Color(204, 204, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText(" Server Della Chat");
+        jLabel1.setText("Easy SMS Server");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 0));

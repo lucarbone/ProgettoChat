@@ -1,7 +1,9 @@
 package serverChat;
 
 import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.UnknownHostException;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,9 +13,42 @@ public class Starter extends javax.swing.JFrame{
     public Starter() {
         try {
             initComponents();
+            
+            // Prendiamo l'indirizzo locale del pc
             InetAddress localHost = InetAddress.getLocalHost();
             String ipAddress = localHost.getHostAddress();
-            txtIp.setText(ipAddress);
+            
+            
+            // Prendiamo l'indirizzo del pc riferito alla rete a cui è connesso
+        try {
+            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+
+            while (networkInterfaces.hasMoreElements()) {
+                NetworkInterface networkInterface = networkInterfaces.nextElement();
+
+                // Ignorare le interfacce che non sono attive o sono di loopback
+                if (!networkInterface.isUp() || networkInterface.isLoopback()) {
+                    continue;
+                }
+
+                Enumeration<InetAddress> inetAddresses = networkInterface.getInetAddresses();
+                while (inetAddresses.hasMoreElements()) {
+                    InetAddress inetAddress = inetAddresses.nextElement();
+
+                    if (!(inetAddress.isLoopbackAddress() || inetAddress.isLinkLocalAddress() || inetAddress.isMulticastAddress() || inetAddress.getHostAddress().equals(ipAddress))) {
+                        System.out.println("Interfaccia: " + networkInterface.getName());
+                        System.out.println("Indirizzo IP: " + inetAddress.getHostAddress());
+                        txtIp.setText(inetAddress.getHostAddress());
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Errore durante il recupero degli indirizzi IP: " + e.getMessage());
+        }
+            
+            
+            
         } catch (UnknownHostException ex) {
             txtIp.setText("127.0.0.1");
         }
