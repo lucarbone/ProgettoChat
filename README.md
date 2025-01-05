@@ -90,9 +90,12 @@ Vediamo un esempio di comunicazione nella chat tra più utenti
 
 # 4.Conclusioni
 
-La realizzazione di questo progetto si è conclusa con successo, le difficoltà incontrate nell'implementazione e nella creazione della chat sono state risolte con più o meno difficoltà. Lo sviluppo sia del codice che del dell'interfaccia è avvenuto
+Questo progetto si è concluso con successo, le difficoltà incontrate nell'implementazione e nella creazione della chat sono state risolte con più o meno difficoltà. Lo sviluppo sia del codice che dell'interfaccia è avvenuto
 gradualmente, partendo da un'idea trasformata in un semplice schizzo per passare successivamente ad una beta dell'applicazione per arrivare poi al progetto terminato.
-Esprimendo il nostro punto di vista questo progetto ci ha permesso di crescere molto sia presonalmente che come gruppo. Abbiamo imparato a relazionarci in modo efficace, a risolvere problemi lavorando come un team arricchendoci a vicenda e migliorando notevolmente le nostre capacità di programmazione.
+Esprimendo il nostro punto di vista questo progetto ci ha permesso di crescere molto sia presonalmente che come gruppo. Abbiamo imparato a relazionarci in modo efficace, a risolvere problemi lavorando come un team arricchendoci a vicenda e migliorando notevolmente le nostre capacità di programmazione. Le insicurezze e dubbi che avevamo all'inizio sono completamente svaniti e grazie all'esperienza (anche se misera) che ci ha fornito questo compito siamo già pronti ad affrontare lavori simili a testa alta.
+
+Luca Carbone, Giovanni Giove, Matteo Medola
+5 dicembre 2025.
 
 
 
