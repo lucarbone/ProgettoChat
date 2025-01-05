@@ -59,7 +59,7 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 
 ### Funzionalità del Client
 * Gestione degli errori di inserimento di porta e indirizzo ip, (in caso di errore per l'indirizzo ip se non si è sbagliata proprio la forma occorre aspettare qualche secondo perchè il server tenta per un certo tempo di connettersi all'indirizzo che gli è stato fornito)
-* Gestione del nickname: viene controllato che l'utente inserisca effettivamente un nickname e se esso è già in utilizzo, chiede all'utente di sceglierne uno differente.
+* Gestione del nickname: viene controllato che l'utente inserisca effettivamente un nickname e che non sia già in utilizzo. Se il nickname è già stato utilizzato da un'altro utente gli viene chiesto di inserirne uno nuovo.
 * Visualizzazione dei messaggi in modo differenziato (i messaggi inviati dal client sono di colore verde, quelli ricevuti di colore grigio)
 * Indentificazione autore del messaggio e orario preciso a cui è stato inviato.
 * Richiedere servizi al server: tramite alcuni comandi specifici (descritti prima) il singolo utente può far svolgere al server determinati compiti. 
