@@ -54,8 +54,10 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 * Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
 * Richiedere servizi al server: tramite alcuni comandi specifici (descritti prima) il singolo utente può far svolgere al server determinati compiti. 
 
+# 3.Primi schizzi per la progettazzione dell'interfaccia grafica
 
-# 3.Presentazione del funzionamento dell'applicazione
+
+# 4.Presentazione del funzionamento dell'applicazione
 Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
 
 ![Starter  del Server](images/ServerStarter.png)
@@ -88,7 +90,7 @@ Vediamo un esempio di comunicazione nella chat tra più utenti
 
 ![Stato del server](images/EsempioChats.png)
 
-# 4.Conclusioni
+# 5.Conclusioni
 
 Questo progetto si è concluso con successo, le difficoltà incontrate nell'implementazione e nella creazione della chat sono state risolte con più o meno difficoltà. Lo sviluppo sia del codice che dell'interfaccia è avvenuto
 gradualmente, partendo da un'idea trasformata in un semplice schizzo per passare successivamente ad una beta dell'applicazione per arrivare poi al progetto terminato.
