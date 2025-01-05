@@ -37,6 +37,8 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 
 * Utilizzo dell'interfaccia grafica java Swing: ci ha permesso di dare una forma reale alla nostra chat, permettendoci di renderla interattiva per l'utente.
 
+### Funzionalità del Server
+
 * Il server è parte della chat: infatti il server tramite la scrittura di determinati messaggi da parte del client fornirà delle risposte, ogni qualvolta un client abbandona la chat,
   o viene bannato il server lo farà presente a tutti gli altri client connessi ad esso. Il server risponde a determinati messaggi scritti dagli utenti, e sono:
     * Comando "Data": il server risponde all'utente che ha inviato questo messaggio con la data e l'ora aggiornata al momento dell'invio del messaggio
@@ -44,11 +46,15 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
     * Comando "Help": il server invia come risposta all'utente, i comandi che lui stesso può svolgere.
     * Comando "Report": il server, se un utente segnala un altro utente, può bannare l'utente segnalato, e di conseguenza restituirà un messaggio in cui dice che l'utente in questione è stato bannato
 
-* Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
-
 * Ban degli utenti: nell'interfaccia del server quando viene mostrato l'utente che si è connesso, viene mostrato affianco, un bottone rosso che permette di bannare un client dalla chat e quindi dal server.
-  
-* Sistema di report degli utenti: un'utente nella chat può segnalare al server il comportamento scorretto di un altro utente così che esso possa bannarlo dalla chat.
+
+### Funzionalità del Client
+
+* Gestione del nickname: questa gestione controlla che l'utente inserisca effettivamente un nickname e se esso è già in utilizzo, chiede all'utente di inserirne uno nuovo.
+* Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
+* Sistema di report degli utenti: un'utente nella chat può segnalare al server il comportamento scorretto di un altro utente così che esso possa bannarlo dalla chat, questo avviene scrivendo nella barra dei messaggi:
+  report + nome dell'utente da reportare.
+* Gestione dell'interfaccia dei messaggi: il client permette di gestire l'interfaccia con cui compaiono i messaggi all'interno della chat, gestendone colore, testo e orario.
 
 
 # 2.Presentazione del funzionamento dell'applicazione
@@ -84,7 +90,12 @@ Vediamo un esempio di comunicazione nella chat tra più utenti
 
 ![Stato del server](EsempioChats.png)
 
+# 3.Conclusioni
 
+La realizzazione di questo progetto, è andata con successo, le difficoltà incontrate nell'implementazione e nella creazione della chat sono state risolte, lo sviluppo sia del codice che del dell'interfaccia è avvenuto
+gradualmente, partendo da una base semplice per arrivare poi al progetto terminato.
+Questo progetto è stato utile per capire com'è lavorare in gruppo e come funzioni la suddivisione del lavoro al suo interno.
+È stato molto utile anche per aumentare le conoscenze e le competenze.
 
 
 
