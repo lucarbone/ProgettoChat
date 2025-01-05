@@ -12,25 +12,25 @@ _CLIENT CODE+GUI_: **Matteo Medola** [@Matteo Medola](https://github.com/MatteoM
 # 1.Introduzione
 In questo progetto ci è stata richiesta dall'insegnate la realizzazione di una chat client-server in Java sfruttando il lavoro svolto precedentemente in classe. Siamo stati suddivisi in più gruppi e ci sono state date le direttive per sviluppare il tutto.
 
-## Obiettivi minimi da raggiungere
-La chat deve funzionare su una rete locale (LAN).
-
-Il server deve accettare la connessione da diversi client identificati da un username univoco,
-e verificare che provengano da identità differenti (non a livello ip, ma a livello username).
-
-Ogni client dovrà leggere e scrivere messaggi simultaneamente. 
-
-Ogni messaggio deve essere preceduto dall'username di colui che l'ha inviato, in modo che ciascun client sappia chi ha scritto il messaggio e l'ora in cui è stato scritto.
-
-Il server deve provvedere a un sistema di logging degli eventi principali.
-#
-Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due cartelle differenti: una client e una server, così da porre le basi per l'architettura client-server.
-
-Dopo aver creato le cartelle, abbiamo progettato l'interfaccia grafica di base sia del server che del client, integrando poi all'interfaccia le funzionalità di base richieste dalla consegna.
-
 ## Ambiente di sviluppo utilizzato
 Abbiamo deciso di utilizzare come ambiente di sviluppo: _NetBeans_, perché ci ha permesso di realizzare l'interfaccia grafica della nostra chat, in maniera semplice e veloce.
 Permettendoci poi di modificarla e aggiornarla in maniera rapida avanzando nella fase di realizzazione del progetto.
+
+## Obiettivi minimi da raggiungere
+* La chat deve funzionare su una rete locale (LAN).
+
+* Il server deve accettare la connessione da diversi client identificati da un username univoco,
+e verificare che provengano da identità differenti (non a livello ip, ma a livello username).
+
+* Ogni client dovrà leggere e scrivere messaggi simultaneamente. 
+
+* Ogni messaggio deve essere preceduto dall'username di colui che l'ha inviato, in modo che ciascun client sappia chi ha scritto il messaggio e l'ora in cui è stato scritto.
+
+* Il server deve provvedere a un sistema di logging degli eventi principali.
+#
+Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due cartelle differenti: una client e una server, così da porre le basi per l'architettura client-server.
+Dopo aver creato le cartelle, abbiamo progettato l'interfaccia grafica di base sia del server che del client, integrando poi le funzionalità di base richieste dalla consegna.
+
 
 
 ## Funzionalità aggiuntive 
