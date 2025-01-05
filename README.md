@@ -24,7 +24,7 @@ Ogni messaggio deve essere preceduto dall'username di colui che l'ha inviato, in
 
 Il server deve provvedere a un sistema di logging degli eventi principali.
 #
-Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due repository differenti: una client e una server, così da porre le basi per l'architettura client-server.
+Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due repository differenti: una client e una server (main), così da porre le basi per l'architettura client-server.
 
 Dopo aver creato le cartelle, abbiamo creato l'interfaccia grafica di base sia del server che del client, integrando poi all'interfaccia le funzionalità di base richieste dalla consegna.
 
