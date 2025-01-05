@@ -17,6 +17,9 @@ Abbiamo deciso di utilizzare come ambiente di sviluppo: _NetBeans_, perché ci h
 Permettendoci poi di modificarla e aggiornarla in maniera rapida avanzando nella fase di realizzazione del progetto.
 
 ## Obiettivi minimi
+Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due cartelle differenti: una client e una server, così da porre le basi per l'architettura client-server.
+Dopo aver creato le cartelle, abbiamo progettato l'interfaccia grafica di base sia del server che del client, integrando poi le funzionalità di base richieste dalla consegna.
+
 * La chat deve funzionare su una rete locale (LAN).
 
 * Il server deve accettare la connessione da diversi client identificati da un username univoco,
@@ -27,11 +30,6 @@ e verificare che provengano da identità differenti (non a livello ip, ma a live
 * Ogni messaggio deve essere preceduto dall'username di colui che l'ha inviato, in modo che ciascun client sappia chi ha scritto il messaggio e l'ora in cui è stato scritto.
 
 * Il server deve provvedere a un sistema di logging degli eventi principali.
-#
-
-Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due cartelle differenti: una client e una server, così da porre le basi per l'architettura client-server.
-Dopo aver creato le cartelle, abbiamo progettato l'interfaccia grafica di base sia del server che del client, integrando poi le funzionalità di base richieste dalla consegna.
-
 
 ## Funzionalità aggiuntive 
 Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentrati sulla realizzazione di nuove funzionalità che permettessero alla chat di essere più completa e funzionale. inizialmente abbiamo seguito i punti suggeriteci dal professore per poi mettere insieme qualche idea personale per rendere l'applicazione più interessante e presonalizzata.
