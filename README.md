@@ -36,14 +36,65 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 * Utilizzo dell'interfaccia grafica java Swing: ci ha permesso di dare una forma reale alla nostra chat, permettendoci di renderla interattiva per l'utente.
 
 * Il server è parte della chat: infatti il server tramite la scrittura di determinati messaggi da parte del client fornirà delle risposte, ogni qualvolta un client abbandona la chat,
-  o viene bannato il server lo farà presente a tutti gli altri client connessi ad esso.
+  o viene bannato il server lo farà presente a tutti gli altri client connessi ad esso. Il server risponde a determinati messaggi scritti dagli utenti, e sono:
+    * Comando "Data": il server risponde all'utente che ha inviato questo messaggio con la data e l'ora aggiornata al momento dell'invio del messaggio
+    * Comando "Utenti": il server invia come risposta all'utente la lista degli utenti presenti in quel momento all'interno della chat
+    * Comando "Help": il server invia come risposta all'utente, i comandi che lui stesso può svolgere.
+    * Comando "Report": il server, se un utente segnala un altro utente, può bannare l'utente segnalato, e di conseguenza restituirà un messaggio in cui dice che l'utente in questione è stato bannato
 
 * Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
 
 * Ban degli utenti: nell'interfaccia del server quando viene mostrato l'utente che si è connesso, viene mostrato affianco, un bottone rosso che permette di bannare un client dalla chat e quindi dal server.
+  
+* Sistema di report degli utenti: un'utente nella chat può segnalare al server il comportamento scorretto di un altro utente così che esso possa bannarlo dalla chat.
 
-  
-  
+
+# 2.Presentazione del funzionamento dell'applicazione
+Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
+
+![Starter  del Server](ServerStarter.png)
+
+Successivamente cliccando sul bottone per collegarsi al server, si aprirà un'altra finestra che consentirà di vedere lo stato del server:
+
+![Stato del Server](StatoInizialeServer.png)
+
+Una volta fatto questo ci spostiamo dal server e avviamo il client, che una volta avviato, mostrerà la seguente interfaccia:
+
+![Starter del Client](StarteServer.png)
+
+Cliccando sul bottone per collegarsi alla chat, si apre una nuova finestra in cui viene richiesto di inserire il proprio nickname, per poter accedere alla chat: 
+
+![Client Nickname](NameClient.png)
+
+Una volta messo il nickname in maniera corretta, si clicca sul tasto di accesso alla chat e si entra nella finestra in cui si possono inviare i messaggi:
+
+![Client Chat](chatClient.png)
+
+Successivamente l'utente può iniziare ad inviare messaggi, o aspettare che altri client si colleghino, eccone un esempio:
+
+![Client Chat Esempio](EsempioChat.png)
+
+Ora che ci sono connessi più utenti al server torniamo sullo stato del server come è cambiata la situazione:
+
+![Stato del server](ServerState.png)
+
+Vediamo un esempio di comunicazione nella chat tra più utenti
+
+![Stato del server](EsempioChats.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
