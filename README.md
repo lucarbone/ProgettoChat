@@ -60,35 +60,35 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 # 2.Presentazione del funzionamento dell'applicazione
 Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
 
-![Starter  del Server](ServerStarter.png)
+![Starter  del Server](images/ServerStarter.png)
 
 Successivamente cliccando sul bottone per creare il server, si aprirà un'altra finestra che consentirà di vedere lo stato del server:
 
-![Stato del Server](StatoInizialeServer.png)
+![Stato del Server](images/StatoInizialeServer.png)
 
 Una volta fatto questo ci spostiamo dal server e avviamo il client, che una volta avviato, mostrerà la seguente interfaccia:
 
-![Starter del Client](StarteServer.png)
+![Starter del Client](images/StarteServer.png)
 
 Cliccando sul bottone per collegarsi alla chat, si apre una nuova finestra in cui viene richiesto di inserire il proprio nickname, per poter accedere alla chat: 
 
-![Client Nickname](NameClient.png)
+![Client Nickname](images/NameClient.png)
 
 Una volta messo il nickname in maniera corretta, si clicca sul tasto di accesso alla chat e si entra nella finestra in cui si possono inviare i messaggi:
 
-![Client Chat](chatClient.png)
+![Client Chat](images/chatClient.png)
 
 Successivamente l'utente può iniziare ad inviare messaggi, o aspettare che altri client si colleghino, eccone un esempio:
 
-![Client Chat Esempio](EsempioChat.png)
+![Client Chat Esempio](images/EsempioChat.png)
 
 Ora che ci sono connessi più utenti al server torniamo sullo stato del server come è cambiata la situazione:
 
-![Stato del server](ServerState.png)
+![Stato del server](images/ServerState.png)
 
 Vediamo un esempio di comunicazione nella chat tra più utenti
 
-![Stato del server](EsempioChats.png)
+![Stato del server](images/EsempioChats.png)
 
 # 3.Conclusioni
 
