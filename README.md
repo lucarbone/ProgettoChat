@@ -97,7 +97,7 @@ gradualmente, partendo da un'idea trasformata in un semplice schizzo per passare
 Esprimendo il nostro punto di vista questo progetto ci ha permesso di crescere molto sia presonalmente che come gruppo. Abbiamo imparato a relazionarci in modo efficace, a risolvere problemi lavorando come un team arricchendoci a vicenda e migliorando notevolmente le nostre capacità di programmazione. Le insicurezze e dubbi che avevamo all'inizio sono completamente svaniti e grazie all'esperienza (anche se misera) che ci ha fornito questo compito siamo già pronti ad affrontare lavori simili a testa alta.
 
 Luca Carbone, Giovanni Giove, Matteo Medola
-5 dicembre 2025.
+5 gennaio 2025.
 
 
 
