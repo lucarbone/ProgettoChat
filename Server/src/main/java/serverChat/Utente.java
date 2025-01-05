@@ -34,44 +34,40 @@ public class Utente extends javax.swing.JPanel {
     private void initComponents() {
 
         nomeJL = new javax.swing.JLabel();
-        KickJB = new javax.swing.JButton();
         ipJL = new javax.swing.JLabel();
+        lblReport = new javax.swing.JLabel();
+        KickJB = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setLayout(new java.awt.GridLayout());
 
+        nomeJL.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         nomeJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nomeJL.setText("nome");
+        add(nomeJL);
+
+        ipJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ipJL.setText("Ip");
+        add(ipJL);
+
+        lblReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblReport.setText("Report:");
+        add(lblReport);
 
         KickJB.setBackground(new java.awt.Color(255, 204, 204));
         KickJB.setForeground(new java.awt.Color(153, 0, 0));
         KickJB.setText("X");
+        KickJB.setToolTipText("Banna l'utente");
+        KickJB.setMaximumSize(new java.awt.Dimension(30, 35));
+        KickJB.setMinimumSize(new java.awt.Dimension(30, 35));
+        KickJB.setPreferredSize(new java.awt.Dimension(30, 35));
         KickJB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 KickJBActionPerformed(evt);
             }
         });
-
-        ipJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ipJL.setText("Ip");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(nomeJL, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ipJL, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(KickJB, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(KickJB, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-            .addComponent(nomeJL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(ipJL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        add(KickJB);
     }// </editor-fold>//GEN-END:initComponents
 
     private void KickJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KickJBActionPerformed
@@ -85,6 +81,7 @@ public class Utente extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton KickJB;
     private javax.swing.JLabel ipJL;
+    private javax.swing.JLabel lblReport;
     private javax.swing.JLabel nomeJL;
     // End of variables declaration//GEN-END:variables
 }

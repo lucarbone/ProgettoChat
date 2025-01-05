@@ -54,7 +54,8 @@ public class ConnectionsList implements Runnable{
         for(int i = 0;i<this.currentCT.getConnectionsListSize();i++){
                 Utente u = new Utente(i,usersList.get(i).getUsername(),usersList.get(i).getAddress(), usersList.get(i));
                 utenti.add(u);
-                utenti.get(i).setBounds(10,(((i)*40)+10),285,35);
+                utenti.get(i).setBounds(10,(((i)*40)+15),360,37);
+                
                 connectionsPanel.add(utenti.get(i));
         }
         
