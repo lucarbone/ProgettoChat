@@ -56,7 +56,7 @@ Per avviare l'applicazione per prima cosa si deve avviare il server, che una vol
 
 ![Starter  del Server](ServerStarter.png)
 
-Successivamente cliccando sul bottone per collegarsi al server, si aprirà un'altra finestra che consentirà di vedere lo stato del server:
+Successivamente cliccando sul bottone per creare ail server, si aprirà un'altra finestra che consentirà di vedere lo stato del server:
 
 ![Stato del Server](StatoInizialeServer.png)
 
