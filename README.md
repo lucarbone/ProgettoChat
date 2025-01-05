@@ -57,10 +57,10 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 # 3.Primi schizzi per la progettazzione dell'interfaccia grafica
 
 * Lato server:
-![SchizzoServer](images/SchizzoServer.png)
+  ![SchizzoServer](images/SchizzoServer.png)
 
 * Lato client:
-* ![SchizzoClient](images/SchizzoClient.png)
+  ![SchizzoClient](images/SchizzoClient.png)
 
 # 4.Presentazione del funzionamento dell'applicazione
 Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
