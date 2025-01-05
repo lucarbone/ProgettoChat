@@ -44,8 +44,8 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 
 
 # 3.Caratteristiche dell'applicazione
-### Funzionalità del Server
 
+### Funzionalità del Server
 * Il server è parte della chat: infatti il server tramite la scrittura di determinati messaggi da parte del client fornirà delle risposte, ogni qualvolta un client entra/abbandona la chat,
   o viene bannato il server lo farà presente a tutti gli altri client connessi ad esso. Il server risponde a determinati messaggi scritti dagli utenti, e sono:
     * Comando "Help": il server invia come risposta all'utente, i comandi che lui stesso può svolgere.
@@ -53,15 +53,19 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
     * Comando "Utenti": il server invia come risposta all'utente la lista degli utenti commessi in quel momento all'interno della chat.
     * Comando "Report" seguito da uno spazio e dall'username dell'utente che si desidera segnalare: permette di segnalare solamente una volta uno specifico utente in modo che l'amministratore del server venga allertato di eventuali comportamenti scorretti all'interno della chat e possa provvedere bannando gli utenti. 
 
-* Ban degli utenti: nell'interfaccia del server quando viene mostrato l'utente che si è connesso, viene mostrato affianco, un bottone rosso che permette di bannare un client dalla chat e quindi dal server.
+* Visualizzazione in tempo reale degli utenti connessi alla chat con informazioni riguardanti nickname, indirizzo ip e quantità di report.
+* Ban degli utenti: nell'interfaccia del server quando viene mostrato l'utente che si è connesso, oltre alla informazioni descritte prima, viene mostrato affianco un bottone rosso che permette di bannare un client dalla chat.
 * Controllo inserimento porta (se è utilizzata da un'altro processo viene visualizzato un messaggio).
 * Gestione completa degli errori che possono occorrere.
 * Controllo e avviso ai client della chiusura del server.
-### Funzionalità del Client
 
-* Gestione del nickname: questa gestione controlla che l'utente inserisca effettivamente un nickname e se esso è già in utilizzo, chiede all'utente di sceglierne uno differente.
-* Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
+### Funzionalità del Client
+* Gestione degli errori di inserimento di porta e indirizzo ip, (in caso di errore per l'indirizzo ip se non si è sbagliata proprio la forma occorre aspettare qualche secondo perchè il server tenta per un certo tempo di connettersi all'indirizzo che gli è stato fornito)
+* Gestione del nickname: viene controllato che l'utente inserisca effettivamente un nickname e se esso è già in utilizzo, chiede all'utente di sceglierne uno differente.
+* Visualizzazione dei messaggi in modo differenziato (i messaggi inviati dal client sono di colore verde, quelli ricevuti di colore grigio)
+* Indentificazione autore del messaggio e orario preciso a cui è stato inviato.
 * Richiedere servizi al server: tramite alcuni comandi specifici (descritti prima) il singolo utente può far svolgere al server determinati compiti. 
+* Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
 
 
 # 4.Presentazione del funzionamento dell'applicazione
