@@ -55,6 +55,7 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 * Richiedere servizi al server: tramite alcuni comandi specifici (descritti prima) il singolo utente può far svolgere al server determinati compiti. 
 
 # 3.Primi schizzi per la progettazzione dell'interfaccia grafica
+![Starter  del Server](images/ServerStarter.png)
 
 
 # 4.Presentazione del funzionamento dell'applicazione
