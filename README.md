@@ -36,6 +36,13 @@ Dopo aver creato le cartelle, abbiamo progettato l'interfaccia grafica di base s
 ## Funzionalità aggiuntive 
 Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentrati sulla realizzazione di nuove funzionalità che permettessero alla chat di essere più completa e funzionale. inizialmente abbiamo seguito i punti suggeriteci dal professore per poi mettere insieme qualche idea personale per rendere l'applicazione più interessante e presonalizzata.
 
+
+# 2.Primi schizzi per la progettazzione dell'interfaccia grafica
+  ![SchizzoServer](images/SchizzoServer.png)
+  ![SchizzoClient](images/SchizzoClient.png)
+
+
+
 # 3.Caratteristiche dell'applicazione
 ### Funzionalità del Server
 
@@ -54,13 +61,6 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 * Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
 * Richiedere servizi al server: tramite alcuni comandi specifici (descritti prima) il singolo utente può far svolgere al server determinati compiti. 
 
-# 3.Primi schizzi per la progettazzione dell'interfaccia grafica
-
-* Lato server:
-  ![SchizzoServer](images/SchizzoServer.png)
-
-* Lato client:
-  ![SchizzoClient](images/SchizzoClient.png)
 
 # 4.Presentazione del funzionamento dell'applicazione
 Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
