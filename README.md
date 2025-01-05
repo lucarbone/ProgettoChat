@@ -1,7 +1,7 @@
 
 # Progetto TPSIT Laboratorio
 ## Progettazione di una chat client-server 
-### Realizzato da Luca Carbone, Matteo Medola e Giovanni Giove. classe 5E, Anno Scolastico 2024/25
+### Realizzato da Luca Carbone, Matteo Medola e Giovanni Giove classe 5E, Anno Scolastico 2024/25
 
 _CLIENT + SERVER_: **Luca Carbone** [@Luca Carbone](https://github.com/lucarbone)
 
