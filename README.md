@@ -30,7 +30,7 @@ Dopo aver creato le cartelle, abbiamo creato l'interfaccia grafica di base sia d
 
 ## Ambiente di sviluppo utilizzato
 Abbiamo deciso di utilizzare come ambiente di sviluppo: _NetBeans_, perché ci ha permesso di realizzare l'interfaccia grafica della nostra chat, in maniera semplice e veloce.
-Permettendoci poi di modificarla e aggiornarla in maniera rapida, più avanti nella fase di realizzazione del progetto.
+Permettendoci poi di modificarla e aggiornarla in maniera rapida avanzando nella fase di realizzazione del progetto.
 
 ## Funzionalità aggiuntive 
 Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentrati sulla realizzazione di nuove funzionalità che permettessero alla chat di essere più completa.
