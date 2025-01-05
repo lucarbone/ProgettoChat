@@ -10,7 +10,7 @@ _SERVER CODE+GUI_: **Giovanni Giove** [@Giovanni Giove](https://github.com/giove
 _CLIENT CODE+GUI_: **Matteo Medola** [@Matteo Medola](https://github.com/MatteoMedola)
 
 # 1.Introduzione
-In questo progetto ci è stato richiesta dall'insegnate la realizzazione di una chat client-server in Java sfruttando il lavoro svolto precedentemente in classe. Siamo stati suddivisi in più gruppi e ci sono state date le direttive per sviluppare il tutto.
+In questo progetto ci è stata richiesta dall'insegnate la realizzazione di una chat client-server in Java sfruttando il lavoro svolto precedentemente in classe. Siamo stati suddivisi in più gruppi e ci sono state date le direttive per sviluppare il tutto.
 
 ## Obiettivi minimi da raggiungere
 La chat deve funzionare su una rete locale (LAN).
@@ -32,10 +32,13 @@ Dopo aver creato le cartelle, abbiamo progettato l'interfaccia grafica di base s
 Abbiamo deciso di utilizzare come ambiente di sviluppo: _NetBeans_, perché ci ha permesso di realizzare l'interfaccia grafica della nostra chat, in maniera semplice e veloce.
 Permettendoci poi di modificarla e aggiornarla in maniera rapida avanzando nella fase di realizzazione del progetto.
 
+
 ## Funzionalità aggiuntive 
 Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentrati sulla realizzazione di nuove funzionalità che permettessero alla chat di essere più completa e funzionale.
 
 * Utilizzo dell'interfaccia grafica java Swing: ci ha permesso di rendere l'applicazione più user-friendly, interattiva ed accattivante.
+
+# 3.Caratteristiche dell'applicazione
 ### Funzionalità del Server
 
 * Il server è parte della chat: infatti il server tramite la scrittura di determinati messaggi da parte del client fornirà delle risposte, ogni qualvolta un client entra/abbandona la chat,
@@ -54,7 +57,7 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 * Richiedere servizi al server: tramite alcuni comandi specifici (descritti prima) il singolo utente può far svolgere al server determinati compiti. 
 
 
-# 2.Presentazione del funzionamento dell'applicazione
+# 3.Presentazione del funzionamento dell'applicazione
 Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
 
 ![Starter  del Server](images/ServerStarter.png)
@@ -87,7 +90,7 @@ Vediamo un esempio di comunicazione nella chat tra più utenti
 
 ![Stato del server](images/EsempioChats.png)
 
-# 3.Conclusioni
+# 4.Conclusioni
 
 La realizzazione di questo progetto, è andata con successo, le difficoltà incontrate nell'implementazione e nella creazione della chat sono state risolte, lo sviluppo sia del codice che del dell'interfaccia è avvenuto
 gradualmente, partendo da una base semplice per arrivare poi al progetto terminato.
