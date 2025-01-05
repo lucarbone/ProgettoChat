@@ -24,37 +24,34 @@ Ogni messaggio deve essere preceduto dall'username di colui che l'ha inviato, in
 
 Il server deve provvedere a un sistema di logging degli eventi principali.
 #
-Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due repository differenti: una client e una server (main), così da porre le basi per l'architettura client-server.
+Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due cartelle differenti: una client e una server, così da porre le basi per l'architettura client-server.
 
-Dopo aver creato le cartelle, abbiamo creato l'interfaccia grafica di base sia del server che del client, integrando poi all'interfaccia le funzionalità di base richieste dalla consegna.
+Dopo aver creato le cartelle, abbiamo progettato l'interfaccia grafica di base sia del server che del client, integrando poi all'interfaccia le funzionalità di base richieste dalla consegna.
 
 ## Ambiente di sviluppo utilizzato
 Abbiamo deciso di utilizzare come ambiente di sviluppo: _NetBeans_, perché ci ha permesso di realizzare l'interfaccia grafica della nostra chat, in maniera semplice e veloce.
 Permettendoci poi di modificarla e aggiornarla in maniera rapida avanzando nella fase di realizzazione del progetto.
 
 ## Funzionalità aggiuntive 
-Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentrati sulla realizzazione di nuove funzionalità che permettessero alla chat di essere più completa.
+Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentrati sulla realizzazione di nuove funzionalità che permettessero alla chat di essere più completa e funzionale.
 
-* Utilizzo dell'interfaccia grafica java Swing: ci ha permesso di dare una forma reale alla nostra chat, permettendoci di renderla interattiva per l'utente.
-
+* Utilizzo dell'interfaccia grafica java Swing: ci ha permesso di rendere l'applicazione più user-friendly, interattiva ed accattivante.
 ### Funzionalità del Server
 
-* Il server è parte della chat: infatti il server tramite la scrittura di determinati messaggi da parte del client fornirà delle risposte, ogni qualvolta un client abbandona la chat,
+* Il server è parte della chat: infatti il server tramite la scrittura di determinati messaggi da parte del client fornirà delle risposte, ogni qualvolta un client entra/abbandona la chat,
   o viene bannato il server lo farà presente a tutti gli altri client connessi ad esso. Il server risponde a determinati messaggi scritti dagli utenti, e sono:
-    * Comando "Data": il server risponde all'utente che ha inviato questo messaggio con la data e l'ora aggiornata al momento dell'invio del messaggio
-    * Comando "Utenti": il server invia come risposta all'utente la lista degli utenti presenti in quel momento all'interno della chat
     * Comando "Help": il server invia come risposta all'utente, i comandi che lui stesso può svolgere.
-    * Comando "Report": il server, se un utente segnala un altro utente, può bannare l'utente segnalato, e di conseguenza restituirà un messaggio in cui dice che l'utente in questione è stato bannato
+    * Comando "Data": il server risponde all'utente che ha inviato questo messaggio con la data e l'ora aggiornata al momento dell'invio del messaggio.
+    * Comando "Utenti": il server invia come risposta all'utente la lista degli utenti commessi in quel momento all'interno della chat.
+    * Comando "Report" seguito da uno spazio e dall'username dell'utente che si desidera segnalare: permette di segnalare solamente una volta uno specifico utente in modo che l'amministratore del server venga allertato di eventuali comportamenti scorretti all'interno della chat e possa provvedere bannando gli utenti. 
 
 * Ban degli utenti: nell'interfaccia del server quando viene mostrato l'utente che si è connesso, viene mostrato affianco, un bottone rosso che permette di bannare un client dalla chat e quindi dal server.
 
 ### Funzionalità del Client
 
-* Gestione del nickname: questa gestione controlla che l'utente inserisca effettivamente un nickname e se esso è già in utilizzo, chiede all'utente di inserirne uno nuovo.
+* Gestione del nickname: questa gestione controlla che l'utente inserisca effettivamente un nickname e se esso è già in utilizzo, chiede all'utente di sceglierne uno differente.
 * Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
-* Sistema di report degli utenti: un'utente nella chat può segnalare al server il comportamento scorretto di un altro utente così che esso possa bannarlo dalla chat, questo avviene scrivendo nella barra dei messaggi:
-  report + nome dell'utente da reportare.
-* Gestione dell'interfaccia dei messaggi: il client permette di gestire l'interfaccia con cui compaiono i messaggi all'interno della chat, gestendone colore, testo e orario.
+* Richiedere servizi al server: tramite alcuni comandi specifici (descritti prima) il singolo utente può far svolgere al server determinati compiti. 
 
 
 # 2.Presentazione del funzionamento dell'applicazione
