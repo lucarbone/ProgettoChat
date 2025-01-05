@@ -90,10 +90,10 @@ Vediamo un esempio di comunicazione nella chat tra più utenti
 
 # 4.Conclusioni
 
-La realizzazione di questo progetto, è andata con successo, le difficoltà incontrate nell'implementazione e nella creazione della chat sono state risolte, lo sviluppo sia del codice che del dell'interfaccia è avvenuto
-gradualmente, partendo da una base semplice per arrivare poi al progetto terminato.
-Questo progetto è stato utile per capire com'è lavorare in gruppo e come funzioni la suddivisione del lavoro al suo interno.
-È stato molto utile anche per aumentare le conoscenze e le competenze.
+La realizzazione di questo progetto si è conclusa con successo, le difficoltà incontrate nell'implementazione e nella creazione della chat sono state risolte con più o meno difficoltà. Lo sviluppo sia del codice che del dell'interfaccia è avvenuto
+gradualmente, partendo da un'idea trasformata in un semplice schizzo per passare successivamente ad una beta dell'applicazione per arrivare poi al progetto terminato.
+Esprimendo il nostro punto di vista questo progetto ci ha permesso di crescere molto sia presonalmente che come gruppo. Abbiamo imparato a relazionarci in modo efficace, a risolvere problemi lavorando come un team arricchendoci a vicenda e migliorando notevolmente le nostre capacità di programmazione.
+
 
 
 
