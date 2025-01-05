@@ -16,7 +16,7 @@ In questo progetto ci è stata richiesta dall'insegnate la realizzazione di una 
 Abbiamo deciso di utilizzare come ambiente di sviluppo: _NetBeans_, perché ci ha permesso di realizzare l'interfaccia grafica della nostra chat, in maniera semplice e veloce.
 Permettendoci poi di modificarla e aggiornarla in maniera rapida avanzando nella fase di realizzazione del progetto.
 
-## Obiettivi minimi da raggiungere
+## Obiettivi minimi
 * La chat deve funzionare su una rete locale (LAN).
 
 * Il server deve accettare la connessione da diversi client identificati da un username univoco,
@@ -28,15 +28,13 @@ e verificare che provengano da identità differenti (non a livello ip, ma a live
 
 * Il server deve provvedere a un sistema di logging degli eventi principali.
 #
+
 Nella realizzazione del progetto, ci siamo concentrati subito sul realizzare gli obiettivi minimi creando appunto due cartelle differenti: una client e una server, così da porre le basi per l'architettura client-server.
 Dopo aver creato le cartelle, abbiamo progettato l'interfaccia grafica di base sia del server che del client, integrando poi le funzionalità di base richieste dalla consegna.
 
 
-
 ## Funzionalità aggiuntive 
-Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentrati sulla realizzazione di nuove funzionalità che permettessero alla chat di essere più completa e funzionale.
-
-* Utilizzo dell'interfaccia grafica java Swing: ci ha permesso di rendere l'applicazione più user-friendly, interattiva ed accattivante.
+Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentrati sulla realizzazione di nuove funzionalità che permettessero alla chat di essere più completa e funzionale. inizialmente abbiamo seguito i punti suggeriteci dal professore per poi mettere insieme qualche idea personale per rendere l'applicazione più interessante e presonalizzata.
 
 # 3.Caratteristiche dell'applicazione
 ### Funzionalità del Server
