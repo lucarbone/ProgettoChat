@@ -68,7 +68,7 @@ Successivamente cliccando sul bottone per creare il server, si aprirà un'altra 
 
 Una volta fatto questo ci spostiamo dal server e avviamo il client, che una volta avviato, mostrerà la seguente interfaccia:
 
-![Starter del Client](images/StarteServer.png)
+![Starter del Client](images/ClientStart.png)
 
 Cliccando sul bottone per collegarsi alla chat, si apre una nuova finestra in cui viene richiesto di inserire il proprio nickname, per poter accedere alla chat: 
 
