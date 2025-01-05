@@ -21,10 +21,12 @@ public class ConnectionThread implements Runnable{
     private ConnectionsList cl;
     private String userName; //  Nickname del client connesso
     private String userMSG; // Messaggio in arrivo dal client connesso
-    private Boolean Ban = false; 
+    private Boolean Ban = false;
+    private int reports;
     
     
     public ConnectionThread(Socket c, ConnectionsList cl){
+        this.reports = 0;
         this.connection = c;
         this.run = true;
         this.userName = "";
@@ -44,18 +46,37 @@ public class ConnectionThread implements Runnable{
     @Override
     public void run() {
         while(this.run){
-            
+            String s = "";
+            String name = "";
             userMSG = this.fromConnection.nextLine();
+            int msgLength = userMSG.length();
+            char messageToArray[] = new char[msgLength];
+            messageToArray = userMSG.toCharArray();
+            
+            if(messageToArray[0]=='R'){
+                for(int i=0; i<msgLength; i++){
+                    if(i<7){
+                        s+=messageToArray[i];
+                    }
+                }
+                if(s.equals("Report ")){
+                    userMSG="Report";
+                    for(int i=7; i<msgLength; i++){
+                        name+=messageToArray[i];
+                    }
+                }
+            }
+            
             
             if(!Ban){
                 switch(userMSG){
 
-                    case ("data"):{
+                    case ("Data"):{
                         Date d = new Date();
                         toConnection.println("Server-"+d);
                         break;
                     }
-                    case ("utenti"):{
+                    case ("Utenti"):{
                         int nUsers = connectionsList.size()-1;
                         String str = "";
                         if(nUsers==0){
@@ -72,8 +93,29 @@ public class ConnectionThread implements Runnable{
                         toConnection.println("Server-"+str);
                         break;
                     }
-                    case ("help"):{
-                        toConnection.println("Server-"+"Ecco l'elenco dei comandi disponibili: help->apre questa sezione utenti->stampa l'elenco degli utenti connessi data->restituisce la data corrente");
+                    case ("Help"):{
+                        toConnection.println("Server-"+"Ecco l'elenco dei comandi disponibili: Help->apre questa sezione Utenti->stampa l'elenco degli utenti connessi Data->restituisce la data corrente Report 'username'->permette di segnalare un'utente");
+                        break;
+                    }
+                    case ("Report"):{
+                        boolean reported = false;
+                       
+                        for (ConnectionThread ct : connectionsList) {
+                            if(ct.userName.equals(name)){
+                                // aggiungi nome alla lista
+                                ct.reports++;
+                                reported=true;
+                                break;
+                            }
+                        }
+                        
+                        if(reported){
+                            cl.RedrawPannel();
+                            toConnection.println("Server-"+"Utente segnalato con successo");
+                        }
+                        else{
+                            toConnection.println("Server-"+"Impossibile segnalare l'utente, nickname incorretto");
+                        }
                         break;
                     }
                     case ("exit"):{
@@ -86,8 +128,8 @@ public class ConnectionThread implements Runnable{
 
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                }
                             }
+                        }
                         this.resetOutputStream();
                         this.connectionsList.remove(this);
                         this.run = false;
@@ -189,7 +231,7 @@ public class ConnectionThread implements Runnable{
     public String getAddress(){
         return this.connection.getInetAddress().getHostAddress();
     }
-    
+    public int getReports(){return this.reports;}
     
     public ConnectionsList getupdate(){
         return cl;

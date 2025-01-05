@@ -43,6 +43,9 @@ public class Starter extends javax.swing.JFrame{
                         }
                     }
                 }
+                if(txtIp.equals("")){
+                    txtIp.setText(ipAddress);
+                }
             } catch (Exception e) {
                 System.err.println("Errore durante il recupero degli indirizzi IP: " + e.getMessage());
             }

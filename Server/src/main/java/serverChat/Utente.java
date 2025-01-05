@@ -6,13 +6,15 @@ import java.util.ArrayList;
 public class Utente extends javax.swing.JPanel {
 
     int userIndex;
+    private int userReports;
     private String userName="";
     private String userIP="";
     private boolean Expelled=false;
     private ConnectionThread user;
     
-    public Utente(int userIndex, String userName, String userIP, ConnectionThread ct) {
+    public Utente(int userIndex, String userName, String userIP, ConnectionThread ct, int reports) {
         initComponents();
+        this.userReports = reports;
         this.userIndex = userIndex;
         this.userName = userName;
         this.userIP = userIP;
@@ -24,8 +26,8 @@ public class Utente extends javax.swing.JPanel {
             //nomeJL.setText(userIndex +": " +userName);
             nomeJL.setText(userName);
         }
-        
         ipJL.setText(userIP);
+        lblReport.setText("Report: "+userReports);
     }
 
     
