@@ -67,6 +67,7 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 
 # 4.Presentazione del funzionamento dell'applicazione
 Abbiamo deciso di chiamare rispettivamente il client e il server: "Easy SMS" e "Easy SMS Server".
+
 Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
 
 ![Starter  del Server](images/ServerStarter.png)
