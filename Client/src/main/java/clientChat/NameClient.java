@@ -130,13 +130,22 @@ public class NameClient extends javax.swing.JFrame {
 
     private void btnConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectActionPerformed
         try{
-            if(txtName.getText().equals("") || txtName.getText().equals("Nickname")){
+            int length = txtName.getText().length();
+            char nickToArray[] = new char[length];
+            nickToArray = txtName.getText().toCharArray();
+            if(nickToArray[0]==' ' || nickToArray[length-1]==' '){
+                lblError.setText("Non inserire spazi!");
+            }
+            else if(txtName.getText().equals("") || txtName.getText().equals("Nickname")){
                 lblError.setText("Inserisci un nome!");
             }
             else if(txtName.getText().contains("-")){
                 lblError.setText("Il simbolo '-' non è concesso.");
             }
             else if(txtName.getText().equals("Server") || txtName.getText().equals("server")){
+                lblError.setText("Nickname non disponibile");
+            }
+            else if(txtName.getText().equals("Report") || txtName.getText().equals("report")){
                 lblError.setText("Nickname non disponibile");
             }
             else{

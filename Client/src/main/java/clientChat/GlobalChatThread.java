@@ -76,6 +76,9 @@ public class GlobalChatThread implements Runnable{
             if(messageAuthor.equals("Server") && messageContent.equals("Sei stato bannato dal server.")){
                 JOptionPane.showMessageDialog(areaMessage, messageContent);
             }
+            else if(messageAuthor.equals("Server") && messageContent.equals("Il server è stato chiuso, tutti gli utenti sono stati disconnessi")){
+                JOptionPane.showMessageDialog(areaMessage, messageContent);
+            }
             else{
                 MessageBox msgBox = new MessageBox(messageAuthor,messageContent, time);
                 msgBox.setColor(Color.lightGray);
