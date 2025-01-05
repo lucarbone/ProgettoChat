@@ -1,7 +1,9 @@
 package serverChat;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.ServerSocket;
 import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.logging.Level;
@@ -35,7 +37,7 @@ public class Starter extends javax.swing.JFrame{
                     while (inetAddresses.hasMoreElements()) {
                         InetAddress inetAddress = inetAddresses.nextElement();
 
-                        if (!(inetAddress.isLoopbackAddress() || inetAddress.isLinkLocalAddress() || inetAddress.isMulticastAddress() || inetAddress.getHostAddress().equals(ipAddress))) {
+                        if (!(inetAddress.isLoopbackAddress() || inetAddress.isLinkLocalAddress() || inetAddress.isMulticastAddress() )) {//|| inetAddress.getHostAddress().equals(ipAddress)
                             System.out.println("Interfaccia: " + networkInterface.getName());
                             System.out.println("Indirizzo IP: " + inetAddress.getHostAddress());
                             txtIp.setText(inetAddress.getHostAddress());
@@ -213,8 +215,9 @@ public class Starter extends javax.swing.JFrame{
                     try{
                         if(port<=1023 || port>=65535){
                             lblError.setText("Inserisci una porta valida!!");
-                        }
-                        else{
+                        }else if(!isAvailable(port)){
+                             lblError.setText("Usa un'altra porta, questa è già in uso!");
+                        }else{
                             play(ip, port);
                             lblError.setText("Tentativo di connessione...");
                         }
@@ -251,4 +254,16 @@ public class Starter extends javax.swing.JFrame{
     private javax.swing.JTextField txtPorta;
     // End of variables declaration//GEN-END:variables
 
+    
+    public static boolean isAvailable(int portNr) {
+        boolean portFree;
+        try (var ignored = new ServerSocket(portNr)) {
+            portFree = true;
+        } catch (IOException e) {
+            portFree = false;
+        }
+        return portFree;
+    }
+    
+    
 }

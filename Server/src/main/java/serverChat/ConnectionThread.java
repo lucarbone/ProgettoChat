@@ -23,6 +23,8 @@ public class ConnectionThread implements Runnable{
     private String userMSG; // Messaggio in arrivo dal client connesso
     private Boolean Ban = false;
     private int reports;
+     private ArrayList<String> RepNames = new ArrayList<>();
+    
     
     
     public ConnectionThread(Socket c, ConnectionsList cl){
@@ -99,21 +101,26 @@ public class ConnectionThread implements Runnable{
                     }
                     case ("Report"):{
                         boolean reported = false;
+                        boolean Alreadyreported = false;
                        
                         for (ConnectionThread ct : connectionsList) {
-                            if(ct.userName.equals(name)){
+                            if(ct.userName.equals(name) && !RepNames.contains(name)){
                                 // aggiungi nome alla lista
+                                RepNames.add(name);
                                 ct.reports++;
                                 reported=true;
                                 break;
+                            }else{
+                                Alreadyreported = true;
                             }
                         }
                         
                         if(reported){
                             cl.RedrawPannel();
                             toConnection.println("Server-"+"Utente segnalato con successo");
-                        }
-                        else{
+                        }else if(Alreadyreported){
+                             toConnection.println("Server-"+"Hai gia segnalato questo utente");
+                        }else{
                             toConnection.println("Server-"+"Impossibile segnalare l'utente, nickname incorretto");
                         }
                         break;
@@ -221,6 +228,7 @@ public class ConnectionThread implements Runnable{
             try {
                 this.toConnection = new PrintWriter(ct.connection.getOutputStream(),true);
                 toConnection.println("Server-Il server è stato chiuso, tutti gli utenti sono stati disconnessi");
+                
             } catch (IOException ex) {
             }
             this.resetOutputStream();

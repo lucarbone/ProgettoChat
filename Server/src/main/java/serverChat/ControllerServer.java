@@ -1,6 +1,7 @@
 package serverChat;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -242,4 +243,6 @@ public class ControllerServer extends javax.swing.JFrame implements Runnable{
         return this.NUsers;
     }
     
+    
+
 }

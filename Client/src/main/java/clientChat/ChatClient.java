@@ -9,11 +9,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class ChatClient extends javax.swing.JFrame implements Runnable{
     
@@ -28,7 +30,7 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
 
         this.fromConnection = fc;
         this.toConnection = tc;
-        gct = new GlobalChatThread(this.getTxtPanel(),fc, this.getScrlPanel());
+        gct = new GlobalChatThread(this.getTxtPanel(),fc, this.getScrlPanel(),this.getTxtMessage(), this.getBtnSend());
         
         Thread t = new Thread(gct);
         t.start();
@@ -215,6 +217,15 @@ public class ChatClient extends javax.swing.JFrame implements Runnable{
     public JScrollPane getScrlPanel(){
         return this.jScrollPane1;
     }
+    
+    public JTextField getTxtMessage(){
+        return this.txtMessage;
+    }
+    
+    public JButton getBtnSend(){
+        return this.btnSend;
+    }
+    
     
     public void addMessage(String message, String time){
         MessageBox msgBox = new MessageBox("Tu", message, time);
