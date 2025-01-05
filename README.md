@@ -10,7 +10,7 @@ _SERVER CODE+GUI_: **Giovanni Giove** [@Giovanni Giove](https://github.com/giove
 _CLIENT CODE+GUI_: **Matteo Medola** [@Matteo Medola](https://github.com/MatteoMedola)
 
 # 1.Introduzione
-Per questo progetto presentiamo la realizzazione e l'implementzione di una chat, sviluppata con architettura _client-server_ .
+In questo progetto ci è stato richiesta dall'insegnate la realizzazione di una chat client-server in Java sfruttando il lavoro svolto precedentemente in classe. Siamo stati suddivisi in più gruppi e ci sono state date le direttive per sviluppare il tutto.
 
 ## Obiettivi minimi da raggiungere
 La chat deve funzionare su una rete locale (LAN).
