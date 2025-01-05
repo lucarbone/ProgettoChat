@@ -54,7 +54,9 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
     * Comando "Report" seguito da uno spazio e dall'username dell'utente che si desidera segnalare: permette di segnalare solamente una volta uno specifico utente in modo che l'amministratore del server venga allertato di eventuali comportamenti scorretti all'interno della chat e possa provvedere bannando gli utenti. 
 
 * Ban degli utenti: nell'interfaccia del server quando viene mostrato l'utente che si è connesso, viene mostrato affianco, un bottone rosso che permette di bannare un client dalla chat e quindi dal server.
-
+* Controllo inserimento porta (se è utilizzata da un'altro processo viene visualizzato un messaggio).
+* Gestione completa degli errori che possono occorrere.
+* Controllo e avviso ai client della chiusura del server.
 ### Funzionalità del Client
 
 * Gestione del nickname: questa gestione controlla che l'utente inserisca effettivamente un nickname e se esso è già in utilizzo, chiede all'utente di sceglierne uno differente.
