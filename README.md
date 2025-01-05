@@ -1,11 +1,13 @@
 
-# Creazione ed implementazione di una chat -Carbone-Giove-Medola
+# Progetto TPSIT Laboratorio
+## Progettazione di una chat client-server 
+### Realizzato da Luca Carbone, Matteo Medola e Giovanni Giove. classe 5E, Anno Scolastico 2024/25
 
 _CLIENT + SERVER_: **Luca Carbone** [@Luca Carbone](https://github.com/lucarbone)
 
-_SERVER CODE GUI_: **Giovanni Giove** [@Giovanni Giove](https://github.com/giove06)
+_SERVER CODE+GUI_: **Giovanni Giove** [@Giovanni Giove](https://github.com/giove06)
 
-_CLIENT CODE GUI_: **Matteo Medola** [@Matteo Medola](https://github.com/MatteoMedola)
+_CLIENT CODE+GUI_: **Matteo Medola** [@Matteo Medola](https://github.com/MatteoMedola)
 
 # 1.Introduzione
 Per questo progetto presentiamo la realizzazione e l'implementzione di una chat, sviluppata con architettura _client-server_ .
