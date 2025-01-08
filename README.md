@@ -76,11 +76,13 @@ Per sistemare questi problemi abbiamo corretto alcune parti del ciclo che crea l
 Mentre facevamo dei test, per verificare il funzionamento della chat, ci siamo imbattuti in un errore curioso, infatti ci eravamo chiesti cosa succedesse mettendo come porta della connessione una Well Known Port.
 Abbiamo quindi provato ad utilizzare la porta 80, dedicata al servizio http, e il server una volta avviata la chat dal lato client ci ha inviato la risposta che proveniva da google chrome, che nel mentre il client era in funzione, non andava più nella maniera corretta. Essendo questo un problema che poteva presentarsi con gli utenti, che non conoscono le Well Known Port, abbiamo deciso di risolvere questo problema aggiungendo un controllo, che bloccasse l'inserimento di tale tipo di porte.
 
-Abbiamo stressato il programma, svolgendo vari test dell'applicazione per vedere se si creassero nuovi problemi: abbiamo creato un elevato spam di messaggi, abbiamo scritto messaggi dalla lunghezza molto elavata, e abbiamo connesso un numero elevato di utenti, così da portare l'applicazione al limite. I risultati sono stati soddisfacenti, perché i problemi riscontrati sono stati minimi, come l'invio di un messaggio da 20.000 caratteri che ha generato un blocco nel programma, per l'elevata pesantezza del messaggio; questo però è un caso estremizzato che non si dovrebbe verificare.
-
 Durante la creazione del server, nella creazione del Server Socket abbiamo notato che facendo partire due server sulla medesima porta, entrambi i server funzionavano, però mentre uno faceva tutte le operazioni normalmente, l’altro rimaneva aperto e non faceva nulla, per risolvere questo problema, prima di far partire il Server Socket abbiamo messo un controllo nel quale,  si verifica che la porta scelta dall’utente non sia già in utilizzo, nel caso sia già utilizzata il server dice all’utente che la porta è già in uso e di sceglierne un altra.
 
-# 5.Presentazione del funzionamento dell'applicazione
+# 5.Test svolti
+
+Abbiamo stressato il programma, svolgendo vari test dell'applicazione per vedere se si creassero nuovi problemi: abbiamo creato un elevato spam di messaggi, abbiamo scritto messaggi dalla lunghezza molto elavata, e abbiamo connesso un numero elevato di utenti, così da portare l'applicazione al limite. I risultati sono stati soddisfacenti, perché i problemi riscontrati sono stati minimi, come l'invio di un messaggio da 20.000 caratteri che ha generato un blocco nel programma, per l'elevata pesantezza del messaggio; questo però è un caso estremizzato che non si dovrebbe verificare.
+
+# 6.Presentazione del funzionamento dell'applicazione
 Come nome dell'applicazione abbiamo deciso "Easy SMS".
 
 Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
@@ -115,7 +117,7 @@ Vediamo un esempio di comunicazione nella chat tra più utenti
 
 ![Stato del server](images/EsempioChats.png)
 
-# 5.Conclusioni
+# 7.Conclusioni
 
 Questo progetto si è concluso con successo, le difficoltà incontrate nell'implementazione e nella creazione della chat sono state risolte con più o meno difficoltà. Lo sviluppo sia del codice che dell'interfaccia è avvenuto
 gradualmente, partendo da un'idea trasformata in un semplice schizzo per passare successivamente ad una beta dell'applicazione per arrivare poi al progetto terminato.
