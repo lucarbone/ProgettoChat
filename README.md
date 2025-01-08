@@ -75,6 +75,8 @@ All'interno del programma durante la scrittura del codice ci siamo imbattuti in 
 Mentre facevamo dei test, per verificare il funzionamento della chat, ci siamo imbattuti in un errore curioso, infatti ci eravamo chiesti cosa succedesse mettendo come porta della connessione una Well Known Port.
 Abbiamo quindi provato ad utilizzare la porta 80, dedicata al servizio http, e il server una volta avviata la chat dal lato client ci ha inviato la risposta che proveniva da google chrome, che nel mentre il client era in funzione, non andava più nella maniera corretta. Essendo questo un problema che poteva presentarsi con gli utenti, che non conoscono le Well Known Port, abbiamo deciso di risolvere questo problema aggiungendo un controllo, che bloccasse l'inserimento di tale tipo di porte.
 
+Abbiamo stressato il programma, svolgendo vari test dell'applicazione per vedere se si creassero nuovi problemi: abbiamo creato un elevato spam di messaggi, abbiamo scritto messaggi dalla lunghezza molto elavata, e abbiamo connesso un numero elevato di utenti, così da portare l'applicazione al limite. I risultati sono stati soddisfacenti, perché i problemi riscontrati sono stati minimi, come l'invio di un messaggio da 20.000 caratteri che ha generato un blocco nel programma, per l'elevata pesantezza del messaggio; questo però è un caso estremizzato che non si dovrebbe verificare.
+
 
 
 # 5.Presentazione del funzionamento dell'applicazione
