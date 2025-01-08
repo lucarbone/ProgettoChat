@@ -100,29 +100,36 @@ public class ConnectionThread implements Runnable{
                         break;
                     }
                     case ("Report"):{
-                        boolean reported = false;
-                        boolean Alreadyreported = false;
+                        
+                        if(!name.equals(this.userName)){
+                            boolean reported = false;
+                            boolean Alreadyreported = false;
                        
-                        for (ConnectionThread ct : connectionsList) {
-                            if(ct.userName.equals(name) && !RepNames.contains(name)){
-                                // aggiungi nome alla lista
-                                RepNames.add(name);
-                                ct.reports++;
-                                reported=true;
-                                break;
+                            for (ConnectionThread ct : connectionsList) {
+                                if(ct.userName.equals(name) && !RepNames.contains(name)){
+                                    // aggiungi nome alla lista
+                                    RepNames.add(name);
+                                    ct.reports++;
+                                    reported=true;
+                                    break;
+                                }else{
+                                    Alreadyreported = true;
+                                }
+                            }
+                        
+                            if(reported){
+                                cl.RedrawPannel();
+                                toConnection.println("Server-"+"Utente segnalato con successo");
+                            }else if(Alreadyreported){
+                                toConnection.println("Server-"+"Hai gia segnalato questo utente");
                             }else{
-                                Alreadyreported = true;
+                                toConnection.println("Server-"+"Impossibile segnalare l'utente, nickname incorretto");
                             }
                         }
-                        
-                        if(reported){
-                            cl.RedrawPannel();
-                            toConnection.println("Server-"+"Utente segnalato con successo");
-                        }else if(Alreadyreported){
-                             toConnection.println("Server-"+"Hai gia segnalato questo utente");
-                        }else{
-                            toConnection.println("Server-"+"Impossibile segnalare l'utente, nickname incorretto");
+                        else{
+                            toConnection.println("Server-Non puoi autosegnalarti!!");
                         }
+                        
                         break;
                     }
                     case ("exit"):{

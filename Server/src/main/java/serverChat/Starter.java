@@ -15,45 +15,15 @@ public class Starter extends javax.swing.JFrame{
     public Starter() {
         try {
             initComponents();
-
             // Prendiamo l'indirizzo locale del pc
             InetAddress localHost = InetAddress.getLocalHost();
             String ipAddress = localHost.getHostAddress();
-            // System.out.println("");
-
-            // Prendiamo l'indirizzo del pc riferito alla rete a cui è connesso
-            try {
-                Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
-
-                while (networkInterfaces.hasMoreElements()) {
-                    NetworkInterface networkInterface = networkInterfaces.nextElement();
-
-                    // Ignorare le interfacce che non sono attive o sono di loopback
-                    if (!networkInterface.isUp() || networkInterface.isLoopback()) {
-                        continue;
-                    }
-
-                    Enumeration<InetAddress> inetAddresses = networkInterface.getInetAddresses();
-                    while (inetAddresses.hasMoreElements()) {
-                        InetAddress inetAddress = inetAddresses.nextElement();
-
-                        if (!(inetAddress.isLoopbackAddress() || inetAddress.isLinkLocalAddress() || inetAddress.isMulticastAddress() )) {//|| inetAddress.getHostAddress().equals(ipAddress)
-                            System.out.println("Interfaccia: " + networkInterface.getName());
-                            System.out.println("Indirizzo IP: " + inetAddress.getHostAddress());
-                            txtIp.setText(inetAddress.getHostAddress());
-                            break;
-                        }
-                    }
-                }
-                if(txtIp.equals("")){
-                    txtIp.setText(ipAddress);
-                }
-            } catch (Exception e) {
-                System.err.println("Errore durante il recupero degli indirizzi IP: " + e.getMessage());
-            }
-
+            txtIp.setText(ipAddress);
         } 
         catch (UnknownHostException ex) {
+            txtIp.setText("127.0.0.1");
+        }
+        if(txtIp.getText().equals("")){
             txtIp.setText("127.0.0.1");
         }
     }
