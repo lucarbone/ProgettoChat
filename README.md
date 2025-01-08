@@ -65,6 +65,16 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 * Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
 
 # 4.Problematiche riscontrate
+Nella realizzazione dell'applicazione, ci siamo imbattuti in alcuni problemi. Uno dei problemi è quello che si è verificato, con la suddivisione del lavoro su due branch differenti(main, client). Abbiamo avuto problemi con il mantenere le versioni di entrambi i branch sempre aggiornate contemporaneamente, perciò abbiamo deciso di tornare a lavorare su un unico branch (main), per portare a termine il progetto.
+
+All'interno del programma durante la scrittura del codice ci siamo imbattuti in errori dovuti alla grafica sia del client che del server, errori che portavano la chat a non funzionare correttamente, dopo un po' di ricerche su cosa potesse essere il problema, abbiamo trovato l'errore: sia per il lato server nella classe(ControllerServer.java), sia per il lato client nella classe (ChatClient.java), la prefferredSize dai noi messa precedentemente, non permetteva il corretto utilizzo della scrollbar nei pannelli, limitando così la comparsa a schermo dei messaggi. Il problema è stato risolto riportando entrambe le prefferedSize al loro valore di default.
+
+---- problema thread lista client connessi-----
+
+Mentre facevamo dei test, per verificare il funzionamento della chat, ci siamo imbattuti in un errore curioso, infatti ci eravamo chiesti cosa succedesse mettendo come porta della connessione una Well Known Port.
+Abbiamo quindi provato ad utilizzare la porta 80, dedicata al servizio http, e il server una volta avviata la chat dal lato client ci ha inviato la risposta che proveniva da google chrome, che nel mentre il client era in funzione, non andava più nella maniera corretta. Essendo questo un problema che poteva presentarsi con gli utenti, che non conoscono le Well Known Port, abbiamo deciso di risolvere questo problema aggiungendo un controllo, che bloccasse l'inserimento di tale tipo di porte.
+
+
 
 # 5.Presentazione del funzionamento dell'applicazione
 Come nome dell'applicazione abbiamo deciso "Easy SMS".
