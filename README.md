@@ -64,8 +64,9 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 * Richiedere servizi al server: tramite alcuni comandi specifici (descritti prima) il singolo utente può far svolgere al server determinati compiti. 
 * Bottone di abbandono della chat: funzionalità che permette ad ogni client di abbandonare la chat, in qualsiasi momento.
 
+# 4.Problematiche riscontrate
 
-# 4.Presentazione del funzionamento dell'applicazione
+# 5.Presentazione del funzionamento dell'applicazione
 Come nome dell'applicazione abbiamo deciso "Easy SMS".
 
 Per avviare l'applicazione per prima cosa si deve avviare il server, che una volta avviato mostrerà la seguente interfaccia:
