@@ -66,6 +66,7 @@ Una volta terminata l'implementazione degli obiettivi minimi, ci siamo concentra
 
 # 4.Problematiche riscontrate
 Nella realizzazione dell'applicazione, ci siamo imbattuti in alcuni problemi. Uno dei problemi è quello che si è verificato, con la suddivisione del lavoro su due branch differenti(main, client). Abbiamo avuto problemi con il mantenere le versioni di entrambi i branch sempre aggiornate contemporaneamente, perciò abbiamo deciso di tornare a lavorare su un unico branch (main), per portare a termine il progetto.
+Inoltre abbiamo avuto dei problemi con le commit, perché alcune di esse dopo l'arrivo di una nuova commit sparivano, per risolvere questo problema, abbiamo caricato manualmente dalla repository su git hub i nuovi aggiornamenti.
 
 All'interno del programma durante la scrittura del codice ci siamo imbattuti in errori dovuti alla grafica sia del client che del server, errori che portavano la chat a non funzionare correttamente, dopo un po' di ricerche su cosa potesse essere il problema, abbiamo trovato l'errore: sia per il lato server nella classe(ControllerServer.java), sia per il lato client nella classe (ChatClient.java), la prefferredSize dai noi messa precedentemente, non permetteva il corretto utilizzo della scrollbar nei pannelli, limitando così la comparsa a schermo dei messaggi. Il problema è stato risolto riportando entrambe le prefferedSize al loro valore di default.
 
